@@ -104,7 +104,7 @@ collapse_angle = 70;    // degrees from Y axis when collapsed
 extended_half_span = arm_half * cos(extension_angle);
 
 // Lateral offset from center pivot to arm endpoint when extended (along X)
-extended_y_offset = arm_half * sin(extension_angle);
+extended_x_offset = arm_half * sin(extension_angle);
 
 // Total mechanism width (all arm pairs side-by-side)
 total_mechanism_width = num_scissor_pairs * arm_width + (num_scissor_pairs - 1) * arm_spacing;
