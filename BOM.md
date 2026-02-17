@@ -8,14 +8,15 @@ Complete parts list for building your Scissor-Skate collapsible skateboard.
 
 | Component | Quantity | Material | Infill | Supports | Est. Time | Est. Filament |
 |-----------|----------|----------|--------|----------|-----------|--------------|
-| Deck Top Platform | 1 | PETG | 50% | Yes | 12 hrs | 250-300g |
-| Deck Bottom Platform | 1 | PETG | 40% | Yes | 10 hrs | 200-250g |
-| Scissor Arms | 8 | PETG | 50% | No | 10 hrs | 150-200g |
+| Scissor Arms | 12 | PETG | 50% | No | 14 hrs | 200-280g |
+| Crossbars | 4 | PETG | 60% | No | 4 hrs | 60-80g |
+| Foot Platforms | 2 | PETG | 40% | No | 4 hrs | 50-70g |
+| Truck Mount Brackets | 2 | PETG | 60% | No | 3 hrs | 40-60g |
 | Pivot Pins | 14 | PETG/PLA | 100% | No | 4 hrs | 50-75g |
 | Locking Pins | 3 | PETG/PLA | 100% | No | 2 hrs | 25-35g |
 
-**Total Print Time**: ~38 hours  
-**Total Filament**: ~675-860g
+**Total Print Time**: ~31 hours  
+**Total Filament**: ~425-600g
 
 ### Print Settings Summary
 
