@@ -20,7 +20,8 @@
  *     [truck]--------[truck]
  *
  * Each "X" is a pair of crossing arms connected at the center pivot.
- * Multiple X-pairs sit side-by-side (Y axis) for board width.
+ * Multiple X-pairs sit side-by-side (X axis) for board width.
+ * Board extends along Y axis (direction of travel).
  */
 
 // ========================================
@@ -91,18 +92,18 @@ scissor_arm_length = deck_length_extended / 2 - 20;
 // Half-length from center pivot to endpoint
 arm_half = scissor_arm_length / 2 - arm_width / 2;
 
-// Extension angle: when extended, arms are nearly aligned with X axis
-// The arm endpoint X offset = arm_half * cos(angle)
-// The arm endpoint Y offset = arm_half * sin(angle)
-extension_angle = 15;   // degrees from X axis when extended
+// Extension angle: when extended, arms are nearly aligned with Y axis (direction of travel)
+// The arm endpoint Y offset = arm_half * cos(angle)
+// The arm endpoint X offset = arm_half * sin(angle)
+extension_angle = 15;   // degrees from Y axis when extended
 
-// Collapse angle: arms rotated to reduce X span
-collapse_angle = 70;    // degrees from X axis when collapsed
+// Collapse angle: arms rotated to reduce Y span
+collapse_angle = 70;    // degrees from Y axis when collapsed
 
-// Effective half-span when extended (center pivot to arm endpoint, along X)
+// Effective half-span when extended (center pivot to arm endpoint, along Y)
 extended_half_span = arm_half * cos(extension_angle);
 
-// Lateral offset from center pivot to arm endpoint when extended (along Y)
+// Lateral offset from center pivot to arm endpoint when extended (along X)
 extended_y_offset = arm_half * sin(extension_angle);
 
 // Total mechanism width (all arm pairs side-by-side)

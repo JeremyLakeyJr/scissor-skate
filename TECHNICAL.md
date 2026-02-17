@@ -34,8 +34,8 @@ For a 24" extended deck:
 The angle θ of each scissor arm relative to horizontal determines the extension state:
 
 ```
-Extended Position: θ ≈ 15° (arms nearly aligned with X axis)
-Collapsed Position: θ ≈ 70° (arms rotated toward Y axis)
+Extended Position: θ ≈ 15° (arms nearly aligned with Y axis, direction of travel)
+Collapsed Position: θ ≈ 70° (arms rotated toward X axis)
 
 Effective Length = Arm Length × cos(θ)
 

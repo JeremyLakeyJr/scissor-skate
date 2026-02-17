@@ -266,8 +266,8 @@ The pantograph mechanism uses crossing arms that pivot at:
 - Outer endpoints (where truck brackets attach)
 - Connection points that constrain the motion
 
-When extended, the arms spread to their maximum angle (~15° from the X axis), creating the full riding length.
-When collapsed, the arms fold to ~70° from the X axis, reducing the overall length by approximately 50%.
+When extended, the arms spread to their maximum angle (~15° from the Y axis), creating the full riding length.
+When collapsed, the arms fold to ~70° from the Y axis, reducing the overall length by approximately 50%.
 
 ### Material Requirements
 
