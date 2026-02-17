@@ -8,11 +8,12 @@ The scissor-lift (pantograph) mechanism is a kinematic linkage that converts rot
 
 ### Key Components
 
-1. **Upper Deck Platform**: Primary riding surface with concave profile
-2. **Lower Deck Platform**: Structural support and connection points
-3. **Scissor Arms**: Crossing linkages that form the pantograph
-4. **Pivot Pins**: Allow rotation at connection points
-5. **Locking Mechanism**: Secures extended position for safe riding
+1. **Scissor Arms**: Wide (60mm, 8mm thick) crossing linkages arranged in 3 side-by-side pairs that form the riding surface
+2. **Crossbars**: Connect all arm endpoints at each end of the mechanism
+3. **Foot Platforms**: Bolt on top of upper crossbars with grip texture — rider stands here
+4. **Truck Mount Brackets**: Bolt below lower crossbars for truck attachment
+5. **Pivot Pins**: Allow rotation at connection points
+6. **Locking Pins**: Pass through aligned holes in crossbars and arms to secure extended position
 
 ### Geometric Principles
 
@@ -33,44 +34,44 @@ For a 24" extended deck:
 The angle θ of each scissor arm relative to horizontal determines the extension state:
 
 ```
-Extended Position: θ ≈ 25° (arms nearly horizontal)
-Collapsed Position: θ ≈ 75° (arms nearly vertical)
+Extended Position: θ ≈ 15° (arms nearly horizontal)
+Collapsed Position: θ ≈ 70° (arms nearly vertical)
 
 Effective Length = Arm Length × cos(θ)
 
-Extended: L × cos(25°) = L × 0.906 (90.6% effective)
-Collapsed: L × cos(75°) = L × 0.259 (25.9% effective)
+Extended: L × cos(15°) = L × 0.966 (96.6% effective)
+Collapsed: L × cos(70°) = L × 0.342 (34.2% effective)
 ```
 
-This gives an extension ratio of approximately 3.5:1 in theory, but the practical ratio is limited by:
+This gives an extension ratio of approximately 2.8:1 in theory, but the practical ratio is limited by:
 - Physical constraints at pivot points
-- Deck platform thickness
+- Crossbar and bracket clearances
 - Structural clearances
 
 ### Structural Analysis
 
 #### Load Distribution
 
-When a rider stands on the extended deck, forces are distributed:
+When a rider stands on the extended board, forces are distributed:
 
-1. **Vertical Load (Weight)**: Distributed across deck surface
-2. **Compression Forces**: Along scissor arm axes
-3. **Tension Forces**: At pivot connections
-4. **Bending Moments**: In deck platforms
+1. **Vertical Load (Weight)**: Through foot platforms → crossbars → arm endpoints → arms
+2. **Compression Forces**: Along scissor arm axes through center pivots
+3. **Tension Forces**: At pivot connections and crossbar bolt holes
+4. **Transfer to Trucks**: Through other arm endpoints → lower crossbars → truck mount brackets → trucks
 
 #### Critical Stress Points
 
 **Highest Stress Areas:**
-- Pivot holes in scissor arms
-- Deck-to-scissor connection points
+- Crossbar-to-arm connection points
 - Center crossing pivots of scissor pairs
-- Truck mounting areas
+- Crossbar bolt holes
+- Foot platform mounting points
 
 **Design Reinforcements:**
 - Extra wall thickness around pivot holes
-- Structural ribs on deck undersides
-- Multiple scissor arm pairs for load sharing
+- Multiple scissor arm pairs (3 side-by-side) for load sharing
 - Wider arms near high-stress pivots
+- Reinforced crossbar bolt hole surrounds
 
 ### Material Considerations
 
@@ -132,31 +133,19 @@ Safe Working Load: ~300-400 N per pivot (≈70-90 lbs)
 
 With multiple pivot points (4-6 per scissor pair), total capacity exceeds typical rider weight.
 
-### Deck Surface Design
+### Foot Platform Design
 
-#### Concave Profile
+#### Grip Texture
 
-The concave curve provides:
-- Better foot grip and control
-- Centered stance position
-- Reduced foot fatigue
+The foot platforms bolt on top of the upper crossbars and provide the rider's standing surface:
+- Textured top surface for grip
+- Bolt holes for secure attachment to crossbars
+- All parts print flat without supports
 
-**Concave Depth Recommendations:**
-- Cruising: 6-8mm (comfortable, less aggressive)
-- Street: 8-12mm (better control, more responsive)
-- Longboard: 4-6mm (stable, less tiring)
-
-#### Nose/Tail Kick
-
-Upward curve at ends allows:
-- Easier turning initiation
-- Manual tricks (if desired)
-- Obstacle clearance
-
-**Curve Height Recommendations:**
-- Minimal (cruiser): 10-15mm
-- Moderate (street): 15-20mm
-- Aggressive (trick): 20-25mm
+**Design Notes:**
+- Platforms are separate pieces for easy replacement if worn
+- Grip texture is printed directly into the surface
+- Platform width spans the 3 side-by-side scissor arm pairs
 
 ### Locking Mechanism Options
 
@@ -164,7 +153,7 @@ Upward curve at ends allows:
 
 - **Pros**: Simple, reliable, low-tech
 - **Cons**: Requires manual insertion/removal
-- **Design**: Locking pin passes through aligned holes in mechanism
+- **Design**: Locking pins pass through aligned holes in crossbars and arms to secure extended position
 
 #### Option 2: Screw-Thread Lock
 
@@ -192,8 +181,8 @@ Upward curve at ends allows:
 - 20-30% infill for non-critical areas
 
 #### Strategic Cutouts
-- Deck platforms: Circular holes in non-stressed regions
 - Scissor arms: Elongated slots between pivots
+- Crossbars: Lightening holes in non-stressed regions
 - Maintains strength while reducing weight by 20-30%
 
 #### Material Distribution
@@ -214,28 +203,28 @@ Upward curve at ends allows:
    - Verify smooth crossing motion
 
 3. **Multi-Pair Integration**
-   - Stack scissor pairs with spacing
+   - Arrange 3 scissor pairs side by side
    - Align all pivot points
    - Insert connecting pins
 
-4. **Deck Platform Attachment**
-   - Position lower deck platform
-   - Insert pivot pins through deck and scissor ends
+4. **Crossbar Attachment**
+   - Bolt crossbars to all arm endpoints at each end
    - Verify parallel alignment
-
-5. **Upper Deck Installation**
-   - Position upper deck platform
-   - Insert remaining pivot pins
    - Test full extension/collapse motion
 
-6. **Locking Mechanism**
-   - Install locking pin guides
-   - Test pin insertion in extended position
-   - Verify secure lock with load testing
+5. **Mechanism Test**
+   - Test smooth extension and collapse
+   - Verify locking pin holes align in extended position
+   - Insert locking pins and verify secure lock
 
-7. **Truck Mounting**
+6. **Foot Platform Installation**
+   - Bolt foot platforms on top of upper crossbars
+   - Verify grip texture faces up
+   - Check secure attachment
+
+7. **Truck Bracket and Truck Mounting**
+   - Bolt truck mount brackets below lower crossbars
    - Install skateboard trucks using standard hardware
-   - Ensure bolt heads are flush or countersunk
    - Attach wheels and bearings
 
 ### Testing Protocol
@@ -295,9 +284,9 @@ Upward curve at ends allows:
 - **Prevention**: Use larger diameter pins (7-8mm)
 - **Detection**: Cracks near pivot holes
 
-#### Mode 2: Deck Platform Fracture
-- **Cause**: Insufficient thickness or infill
-- **Prevention**: Increase deck thickness (7-8mm) or infill (60%+)
+#### Mode 2: Crossbar Fracture
+- **Cause**: Insufficient thickness or infill at bolt holes
+- **Prevention**: Reinforce crossbar bolt hole surrounds, increase infill (60%+)
 - **Detection**: Visible cracks, sagging
 
 #### Mode 3: Scissor Arm Bending
@@ -314,26 +303,27 @@ Upward curve at ends allows:
 
 #### Version 1.0 (Initial Design)
 - Basic scissor mechanism
-- Simple flat deck
+- Separate upper/lower deck platforms
 - Manual pin locking
 - **Issues**: Heavy, thick when collapsed
 
 #### Version 2.0 (Weight Reduction)
-- Added cutouts in arms and deck
+- Added cutouts in arms
 - Optimized infill strategy
 - **Result**: 25% weight reduction
 
 #### Version 3.0 (Geometry Optimization)
 - Refined arm angles
 - Improved collapse ratio
-- Better deck profile
 - **Result**: 15% thinner when collapsed
 
 #### Version 4.0 (Current)
 - Parametric design
-- Multiple configurations
-- Enhanced locking system
-- **Result**: Fully customizable, reliable
+- No separate deck platforms — rider stands directly on scissor mechanism
+- Wide arms (60mm) in 3 side-by-side pairs form the riding surface
+- Crossbars, foot platforms, and truck brackets bolt onto arm endpoints
+- All parts print flat without supports
+- **Result**: Fully customizable, reliable, simpler assembly
 
 ### Future Enhancements
 
@@ -356,8 +346,8 @@ scissor-skate/
 │   ├── parameters.scad             # All configurable parameters
 │   ├── deck_surface.scad           # Deck surface shape module
 │   ├── truck_mounting.scad         # Truck mounting hole pattern
-│   ├── deck_top.scad               # Top deck platform
-│   ├── deck_bottom.scad            # Bottom deck platform
+│   ├── deck_top.scad               # (Legacy — not used in current design)
+│   ├── deck_bottom.scad            # (Legacy — not used in current design)
 │   ├── scissor_mechanism.scad      # Scissor arms and mechanism
 │   ├── pivot_pin.scad              # Pivot pin for joints
 │   └── lock_mechanism.scad         # Locking pin
@@ -390,7 +380,7 @@ Print Settings:
 - Top/Bottom Layers: 5-6
 - Infill: 40-60%
 - Infill Pattern: Gyroid or Honeycomb
-- Support: Yes (for overhangs > 45°)
+- Support: None (all parts print flat)
 - Brim: 5-8mm (for large parts)
 
 Filament Settings:
@@ -417,9 +407,7 @@ Infill:
 - Infill Pattern: Gyroid or Cubic
 
 Support:
-- Generate Support: Yes
-- Support Pattern: Gyroid
-- Support Density: 15%
+- Generate Support: No (all parts print flat)
 
 Build Plate Adhesion:
 - Build Plate Adhesion Type: Brim
