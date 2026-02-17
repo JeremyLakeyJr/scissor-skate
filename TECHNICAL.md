@@ -351,12 +351,22 @@ Upward curve at ends allows:
 
 ```
 scissor-skate/
-├── scissor_skate.scad          # Main parametric design file
-├── README.md                    # User guide and build instructions
-├── CONFIGURATIONS.md            # Pre-configured parameter sets
-├── TECHNICAL.md                 # This file - technical details
-├── LICENSE                      # Project license
-└── .gitignore                  # Git ignore patterns
+├── scissor_skate.scad              # Main entry point (assembly + render modes)
+├── components/
+│   ├── parameters.scad             # All configurable parameters
+│   ├── deck_surface.scad           # Deck surface shape module
+│   ├── truck_mounting.scad         # Truck mounting hole pattern
+│   ├── deck_top.scad               # Top deck platform
+│   ├── deck_bottom.scad            # Bottom deck platform
+│   ├── scissor_mechanism.scad      # Scissor arms and mechanism
+│   ├── pivot_pin.scad              # Pivot pin for joints
+│   └── lock_mechanism.scad         # Locking pin
+├── screenshots/                    # Rendered images of the design
+├── README.md                       # User guide and build instructions
+├── CONFIGURATIONS.md               # Pre-configured parameter sets
+├── TECHNICAL.md                    # This file - technical details
+├── LICENSE                         # Project license
+└── .gitignore                      # Git ignore patterns
 ```
 
 ### CAD Export Workflow

@@ -201,15 +201,25 @@ This document verifies that the Scissor-Skate design meets all requirements from
 
 ```
 scissor-skate/
-├── scissor_skate.scad          # ✅ Main parametric design (380+ lines)
-├── README.md                    # ✅ Complete build instructions
-├── QUICKSTART.md                # ✅ Quick start guide
-├── CONFIGURATIONS.md            # ✅ Pre-made configurations
-├── TECHNICAL.md                 # ✅ Engineering documentation
-├── SPECIFICATIONS.md            # ✅ This verification document
-├── export_stls.sh              # ✅ Automated export script
-├── .gitignore                  # ✅ Git ignore patterns
-└── LICENSE                     # ✅ Project license
+├── scissor_skate.scad              # Main entry point (assembly + render modes)
+├── components/
+│   ├── parameters.scad             # All configurable parameters
+│   ├── deck_surface.scad           # Deck surface shape module
+│   ├── truck_mounting.scad         # Truck mounting hole pattern
+│   ├── deck_top.scad               # Top deck platform
+│   ├── deck_bottom.scad            # Bottom deck platform
+│   ├── scissor_mechanism.scad      # Scissor arms and mechanism
+│   ├── pivot_pin.scad              # Pivot pin for joints
+│   └── lock_mechanism.scad         # Locking pin
+├── screenshots/                    # Rendered images of the design
+├── README.md                       # ✅ Complete build instructions
+├── QUICKSTART.md                   # ✅ Quick start guide
+├── CONFIGURATIONS.md               # ✅ Pre-made configurations
+├── TECHNICAL.md                    # ✅ Engineering documentation
+├── SPECIFICATIONS.md               # ✅ This verification document
+├── export_stls.sh                  # ✅ Automated export script
+├── .gitignore                      # ✅ Git ignore patterns
+└── LICENSE                         # ✅ Project license
 ```
 
 ## 🎯 Bonus Features Implemented
