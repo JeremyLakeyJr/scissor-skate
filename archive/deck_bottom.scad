@@ -1,4 +1,6 @@
 /*
+ * Legacy separate deck design — current uses integrated arms as surface.
+ *
  * Scissor-Skate: Deck Bottom Platform Module
  *
  * Lower structural platform with weight reduction features.

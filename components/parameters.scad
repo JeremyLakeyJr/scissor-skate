@@ -41,13 +41,31 @@ arm_width = 60;                     // mm (wide arms - these are the riding surf
 arm_thickness = 8;                  // mm (thick for strength - rider stands on these)
 arm_spacing = 5;                    // mm (gap between parallel arm pairs)
 pivot_diameter = 8;                 // mm (diameter of pivot holes - larger for strength)
+// pivot_tolerance (default 0.3): Calibrate per printer/filament—print a
+// single joint test first and adjust 0.1–0.5 mm for smooth rotation with
+// minimal slop. Lower values (0.1–0.2) suit resin or well-tuned FDM;
+// higher values (0.4–0.5) may be needed for low-res or fast prints.
 pivot_tolerance = 0.3;              // mm (clearance for pivots)
+
+// --- Metal shoulder-bolt pivot parameters ---
+// For production use, replace print-in-place pins with metal shoulder bolts.
+// Recommended: M5 × 10 mm shoulder bolt (or 10-24 × 3/8" for imperial).
+pivot_bolt_dia = 5;                 // mm (shoulder bolt shank diameter, e.g. M5)
+pivot_clearance = 0.2;              // mm (extra clearance around bolt shank)
+shoulder_length = 10;               // mm (length of shoulder/shank portion)
+bolt_head_dia = 8;                  // mm (bolt head or washer outer diameter)
+bolt_head_height = 3.5;             // mm (bolt head recess depth)
 
 // Foot platform parameters (flat pads on top of scissor arms)
 foot_platform_length = 100;         // mm (length of each foot pad along X)
 foot_platform_width = 200;          // mm (width spanning across arm pairs along Y)
 foot_platform_thickness = 4;        // mm (thin platform on top of arms)
 grip_texture_depth = 1;             // mm (grip texture height)
+
+// Ergonomic foot platform options
+foot_concave_depth = 1.5;           // mm (gentle bowl/concave depth on platform surface)
+kick_angle = 5;                     // degrees (nose/tail kick ramp angle)
+kick_length = 30;                   // mm (length of kick ramp at platform ends)
 
 // Truck mounting parameters (mounted at scissor endpoints)
 truck_mounting_hole_diameter = 5;   // mm

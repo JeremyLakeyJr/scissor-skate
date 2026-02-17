@@ -1,4 +1,6 @@
 /*
+ * Legacy separate deck design — current uses integrated arms as surface.
+ *
  * Scissor-Skate: Deck Top Platform Module
  *
  * Main riding surface with concave profile, truck mounts, and reinforcement ribs.
