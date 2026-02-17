@@ -22,6 +22,15 @@ A portable, collapsible skateboard that uses a scissor-lift (pantograph) mechani
 |-----------|----------------|
 | ![Pivot Pin](screenshots/pivot_pin.png) | ![Lock Mechanism](screenshots/lock_mechanism.png) |
 
+### Additional Views (Planned)
+
+The following renders would further illustrate the design — contributions welcome!
+
+- **Exploded view**: All parts separated vertically showing assembly order (use `render_mode = "exploded"` in OpenSCAD)
+- **Collapsed vs. extended side-by-side**: Direct comparison of both states
+- **Pivot close-up**: Shoulder bolt hole detail with chamfer cross-section
+- **Collapse motion animation** (GIF): Animated sequence from extended → collapsed
+
 ## 📐 Design Specifications
 
 ### Collapsed Dimensions
@@ -96,10 +105,11 @@ scissor-skate/
 │   ├── scissor_mechanism.scad      # Scissor arms, foot platforms, truck brackets
 │   ├── truck_mounting.scad         # Truck mounting hole pattern
 │   ├── deck_surface.scad           # Deck surface shape (utility module)
-│   ├── deck_top.scad               # (Legacy) Top deck platform
-│   ├── deck_bottom.scad            # (Legacy) Bottom deck platform
-│   ├── pivot_pin.scad              # Pivot pin for joints
+│   ├── pivot_pin.scad              # Pivot pin + shoulder bolt hole modules
 │   └── lock_mechanism.scad         # Locking pin
+├── archive/
+│   ├── deck_top.scad               # (Legacy) Top deck platform
+│   └── deck_bottom.scad            # (Legacy) Bottom deck platform
 ├── screenshots/                    # Rendered images of the design
 ├── README.md                       # This file
 ├── QUICKSTART.md                   # Quick start guide
@@ -165,12 +175,17 @@ For each component:
 #### Recommended Settings:
 ```
 Layer Height: 0.2mm (0.3mm for faster, less detailed prints)
-Infill: 40-60% (higher for structural scissor arms and crossbars)
+Infill: 40-60% gyroid (higher for structural scissor arms and crossbars)
 Wall Count: 4-6 perimeters
 Top/Bottom Layers: 5-6 layers
 Support: No (all parts print flat without supports)
 Adhesion: Brim recommended for larger parts
 ```
+
+> **Material Recommendation:** Use PETG or carbon-fiber PETG for all structural parts
+> (scissor arms, crossbars, truck brackets). Gyroid infill at 40–60 % provides the
+> best strength-to-weight ratio. PLA is suitable only for test prints. See BOM.md for
+> full material comparison.
 
 #### Print Order:
 1. Start with one scissor arm to test pivot hole tolerances
@@ -184,12 +199,12 @@ Adhesion: Brim recommended for larger parts
 
 Use `render_mode = "exploded"` in OpenSCAD for a visual assembly reference.
 
-1. **Cross two scissor arms** at their center pivot holes, insert a center pivot pin
+1. **Cross two scissor arms** at their center pivot holes, insert a center pivot pin (or M5 shoulder bolt for production builds)
 2. **Repeat for each scissor pair** — 3 pairs arranged side by side
 3. **Attach lower crossbars**: insert pivot pins through the lower arm endpoints and crossbar holes (one crossbar at each end)
 4. **Attach upper crossbars**: insert pivot pins through the upper arm endpoints and crossbar holes
 5. **Test mechanism**: pull crossbars apart to extend, push together to collapse — should move smoothly
-6. **Insert locking pins**: push locking pins through aligned holes in crossbars and arms to secure extended position
+6. **Insert locking pins**: push locking pins through aligned holes in crossbars and arms to secure extended position. Consider double pins or secondary latches for critical safety.
 7. **Bolt foot platforms** on top of upper crossbars using M5 bolts through mounting holes
 8. **Bolt truck brackets** below lower crossbars using M5 bolts through mounting holes
 9. **Mount trucks and wheels**: attach standard skateboard trucks to the truck brackets
@@ -261,7 +276,8 @@ For a standard build:
 - **Print Time**: 25-40 hours total (depending on settings)
 - **Skateboard Trucks**: 2 standard trucks
 - **Wheels**: 4 skateboard wheels (52-60mm recommended)
-- **Hardware**: 8 bolts and nuts for truck mounting
+- **Hardware**: 8 bolts and nuts for truck mounting, 14 M5 shoulder bolts for pivots (see BOM.md)
+- **Estimated Assembled Weight**: ~400–600 g printed parts + ~800–1000 g hardware (trucks, wheels, bolts) ≈ 1.2–1.6 kg total
 
 ### Weight Capacity
 
@@ -271,16 +287,21 @@ Designed for riders up to 200 lbs (91 kg) when using:
 - 2+ scissor arm pairs
 - Proper assembly
 
-**Important**: Always test the mechanism with weights before riding. 3D printed parts may have limitations compared to traditional skateboard materials.
+**Important**: Always test the mechanism with weights before riding. 3D printed parts may have limitations compared to traditional skateboard materials. Use metal shoulder bolts for all pivots — printed pivot pins are for prototyping only.
 
-## ⚠️ Safety Warnings
+## ⚠️ Safety & Durability
 
-1. **Prototype Testing**: Thoroughly test the locking mechanism before riding
-2. **Material Selection**: Use appropriate filament for your weight and use case
-3. **Regular Inspection**: Check for cracks or wear before each use
-4. **Locking Verification**: Always ensure locking pins are fully engaged
-5. **Start Slow**: Test the board at low speeds first
-6. **Wear Protection**: Always wear helmet and pads
+> **Use metal shoulder bolts for all pivots — print-in-place pins are only for prototyping.**
+
+1. **Metal Pivot Hardware**: Replace all printed pivot pins with M5 × 10 mm shoulder bolts (or 10-24 × 3/8" imperial) for any board that will bear rider weight. See BOM.md for recommended hardware. The `shoulder_bolt_hole()` module in `pivot_pin.scad` provides correctly sized holes with insertion chamfers.
+2. **Progressive Load Testing**: Test under load gradually — start with static 50 lbs, then increase in 25 lb increments. Only proceed to dynamic (riding) loads after passing static tests with no cracking or deformation.
+3. **Inspect Before Every Ride**: Monitor for cracks, wear, or delamination after every use. Pay special attention to pivot holes, arm centers, and crossbar joints.
+4. **Locking Verification**: Always verify all locking pins are fully engaged before riding. Consider double pins or secondary latches for critical safety.
+5. **Riding Limitations**: Not suitable for high-speed riding, ramps, or tricks until the design has been extensively tested with your specific build. Start with slow, flat-ground cruising only.
+6. **Material Selection**: Use PETG or carbon-fiber PETG for all structural parts (arms, crossbars). PLA is acceptable only for prototyping — it is too brittle for sustained rider loads.
+7. **Infill & Strength**: Print structural parts with gyroid infill at 40–60 % and 4–6 wall perimeters for optimal strength-to-weight ratio.
+8. **Wear Protection**: Always wear a helmet and pads.
+9. **Prototype Testing**: Thoroughly test the locking mechanism before riding.
 
 ## 🔧 Troubleshooting
 
