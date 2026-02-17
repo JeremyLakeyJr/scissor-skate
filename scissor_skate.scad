@@ -92,21 +92,20 @@ module assembly() {
             right_x = arm_half * cos(extension_angle);
             z_upper = arm_thickness / 2;
             z_lower = -arm_thickness / 2;
-            upper_ep_z = arm_half * sin(extension_angle);
             
-            left_truck_z = z_lower - upper_ep_z - arm_thickness/2 - truck_bracket_thickness - wheel_diameter/2;
-            right_truck_z = z_upper - upper_ep_z - arm_thickness/2 - truck_bracket_thickness - wheel_diameter/2;
+            // Truck brackets are flat below the lower crossbars (no vertical displacement)
+            truck_z = z_lower - arm_thickness/2 - truck_bracket_thickness - wheel_diameter/2;
             
             color("DimGray", 0.6) {
                 // Left (rear) wheels
-                translate([left_x, -total_mechanism_width/2 - 15, left_truck_z])
+                translate([left_x, -total_mechanism_width/2 - 15, truck_z])
                     rotate([90, 0, 0]) cylinder(h=10, d=wheel_diameter, center=true, $fn=32);
-                translate([left_x, total_mechanism_width/2 + 15, left_truck_z])
+                translate([left_x, total_mechanism_width/2 + 15, truck_z])
                     rotate([90, 0, 0]) cylinder(h=10, d=wheel_diameter, center=true, $fn=32);
                 // Right (front) wheels
-                translate([right_x, -total_mechanism_width/2 - 15, right_truck_z])
+                translate([right_x, -total_mechanism_width/2 - 15, truck_z])
                     rotate([90, 0, 0]) cylinder(h=10, d=wheel_diameter, center=true, $fn=32);
-                translate([right_x, total_mechanism_width/2 + 15, right_truck_z])
+                translate([right_x, total_mechanism_width/2 + 15, truck_z])
                     rotate([90, 0, 0]) cylinder(h=10, d=wheel_diameter, center=true, $fn=32);
             }
         }
