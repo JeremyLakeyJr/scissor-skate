@@ -9,7 +9,7 @@
  *
  * Each scissor X-pair consists of two arms (A and B) that cross at
  * their center pivot holes. Multiple X-pairs are arranged side-by-side
- * along the Y axis to create the board width.
+ * along the X axis to create the board width.
  *
  * Assembly order:
  *   1. Take arm A and arm B, cross them at center, insert center pivot pin.
@@ -21,7 +21,7 @@
  *   7. Insert locking pins through the locking holes to secure extended position.
  *   8. Mount standard skateboard trucks on the truck brackets.
  *
- *  Side view (extended, one X-pair):
+ *  Top view (extended, one X-pair):
  *
  *   [foot pad]                       [foot pad]
  *   ===crossbar===              ===crossbar===
@@ -228,83 +228,75 @@ module scissor_mechanism_extended() {
     z_lower = -arm_thickness / 2;
     
     // --- Scissor arm X-pairs (one per num_scissor_pairs, side by side) ---
+    // Arms are oriented along Y (direction of travel) and rotate in the YZ plane
+    // so the board extends lengthwise. Pairs are arranged side-by-side along X.
     for (pair = [0 : num_scissor_pairs - 1]) {
-        y_pos = (pair - (num_scissor_pairs - 1) / 2) * (arm_width + arm_spacing);
+        x_pos = (pair - (num_scissor_pairs - 1) / 2) * (arm_width + arm_spacing);
         
-        // Arm A — tilted at +extension_angle (upper layer)
+        // Arm A — oriented along Y, rotated +extension_angle (upper layer)
         color("SteelBlue", 0.9)
-        translate([0, y_pos, z_upper])
-            rotate([0, extension_angle, 0])
+        translate([x_pos, 0, z_upper])
+            rotate([0, 0, 90 + extension_angle])
                 scissor_arm();
         
-        // Arm B — tilted at -extension_angle (lower layer), crossing arm A
+        // Arm B — oriented along Y, rotated -extension_angle (lower layer), crossing arm A
         color("SlateGray", 0.85)
-        translate([0, y_pos, z_lower])
-            rotate([0, -extension_angle, 0])
+        translate([x_pos, 0, z_lower])
+            rotate([0, 0, 90 - extension_angle])
                 scissor_arm();
     }
     
     // --- Crossbars at each end (connect all arm endpoints) ---
-    // Left crossbar: at x = -arm_half * cos(angle), z = ±arm_half * sin(angle)
-    // Arm A left endpoint is at upper height going left-down
-    // Arm B left endpoint is at lower height going left-up
-    // The crossbar sits at the average Z, at the endpoint X
+    // Arms extend along Y, so endpoints are at Y offsets.
+    // Crossbars run along X (perpendicular to travel = truck axle direction).
     
-    left_x = -arm_half * cos(extension_angle);
-    right_x = arm_half * cos(extension_angle);
-    upper_endpoint_z = arm_half * sin(extension_angle);   // arm A left end goes up
-    lower_endpoint_z = -arm_half * sin(extension_angle);  // arm A right end goes down
+    rear_y = -arm_half * cos(extension_angle);
+    front_y = arm_half * cos(extension_angle);
     
-    // Upper-left crossbar (arm A left endpoints = high side)
-    color("CadetBlue", 0.9)
-    translate([left_x, 0, z_upper + upper_endpoint_z])
-        rotate([0, 0, 90])
+    // Upper crossbars (at arm A endpoint height)
+    color("CadetBlue", 0.9) {
+        translate([0, rear_y, z_upper])
             crossbar();
-    
-    // Lower-left crossbar (arm B left endpoints = low side)
-    color("DarkSlateGray", 0.85)
-    translate([left_x, 0, z_lower - upper_endpoint_z])
-        rotate([0, 0, 90])
+        translate([0, front_y, z_upper])
             crossbar();
+    }
     
-    // Upper-right crossbar (arm A right endpoints = low side)
-    color("CadetBlue", 0.9)
-    translate([right_x, 0, z_upper - upper_endpoint_z])
-        rotate([0, 0, 90])
+    // Lower crossbars (at arm B endpoint height)
+    color("DarkSlateGray", 0.85) {
+        translate([0, rear_y, z_lower])
             crossbar();
-    
-    // Lower-right crossbar (arm B right endpoints = high side)
-    color("DarkSlateGray", 0.85)
-    translate([right_x, 0, z_lower + upper_endpoint_z])
-        rotate([0, 0, 90])
+        translate([0, front_y, z_lower])
             crossbar();
+    }
     
     // --- Foot platforms on top of the upper crossbars (rider stands here) ---
-    top_z_left = z_upper + upper_endpoint_z + arm_thickness/2 + foot_platform_thickness/2;
-    top_z_right = z_lower + upper_endpoint_z + arm_thickness/2 + foot_platform_thickness/2;
+    top_z = z_upper + arm_thickness/2 + foot_platform_thickness/2;
     
     color("DodgerBlue", 0.8) {
-        // Left foot platform (rear foot)
-        translate([left_x, 0, top_z_left])
-            foot_platform();
+        // Rear foot platform
+        translate([0, rear_y, top_z])
+            rotate([0, 0, 90])
+                foot_platform();
         
-        // Right foot platform (front foot)
-        translate([right_x, 0, top_z_right])
-            foot_platform();
+        // Front foot platform
+        translate([0, front_y, top_z])
+            rotate([0, 0, 90])
+                foot_platform();
     }
     
     // --- Truck mount brackets below the lower crossbars ---
-    bottom_z_left = z_lower - upper_endpoint_z - arm_thickness/2 - truck_bracket_thickness/2;
-    bottom_z_right = z_upper - upper_endpoint_z - arm_thickness/2 - truck_bracket_thickness/2;
+    bottom_z = z_lower - arm_thickness/2 - truck_bracket_thickness/2;
     
     color("DimGray", 0.9) {
-        // Left truck bracket
-        translate([left_x, 0, bottom_z_left])
-            truck_mount_bracket();
+        // Rear truck bracket
+        translate([0, rear_y, bottom_z])
+            rotate([0, 0, 90])
+                truck_mount_bracket();
         
-        // Right truck bracket
-        translate([right_x, 0, bottom_z_right])
-            truck_mount_bracket();
+        // Front truck bracket
+        translate([0, front_y, bottom_z])
+            rotate([0, 0, 90])
+                truck_mount_bracket();
     }
 }
 
@@ -313,61 +305,65 @@ module scissor_mechanism_extended() {
 // ========================================
 
 // Full mechanism in collapsed (portable) position.
-// Arms are nearly vertical, crossbars stack close together.
+// Arms are nearly perpendicular to Y in XY plane, crossbars stack close together.
 module scissor_mechanism_collapsed() {
     z_upper = arm_thickness / 2;
     z_lower = -arm_thickness / 2;
     
     // --- Scissor arm X-pairs ---
+    // Arms oriented along Y, collapse by rotating toward X.
     for (pair = [0 : num_scissor_pairs - 1]) {
-        y_pos = (pair - (num_scissor_pairs - 1) / 2) * (arm_width + arm_spacing);
+        x_pos = (pair - (num_scissor_pairs - 1) / 2) * (arm_width + arm_spacing);
         
         color("SteelBlue", 0.9)
-        translate([0, y_pos, z_upper])
-            rotate([0, collapse_angle, 0])
+        translate([x_pos, 0, z_upper])
+            rotate([0, 0, 90 + collapse_angle])
                 scissor_arm();
         
         color("SlateGray", 0.85)
-        translate([0, y_pos, z_lower])
-            rotate([0, -collapse_angle, 0])
+        translate([x_pos, 0, z_lower])
+            rotate([0, 0, 90 - collapse_angle])
                 scissor_arm();
     }
     
-    // Collapsed crossbar positions
-    collapsed_x = arm_half * cos(collapse_angle);
-    collapsed_z_offset = arm_half * sin(collapse_angle);
+    // Collapsed crossbar positions (endpoints close together along Y)
+    collapsed_y = arm_half * cos(collapse_angle);
     
     // Upper crossbars
     color("CadetBlue", 0.9) {
-        translate([-collapsed_x, 0, z_upper + collapsed_z_offset])
-            rotate([0, 0, 90]) crossbar();
-        translate([collapsed_x, 0, z_upper - collapsed_z_offset])
-            rotate([0, 0, 90]) crossbar();
+        translate([0, -collapsed_y, z_upper])
+            crossbar();
+        translate([0, collapsed_y, z_upper])
+            crossbar();
     }
     
     // Lower crossbars
     color("DarkSlateGray", 0.85) {
-        translate([-collapsed_x, 0, z_lower - collapsed_z_offset])
-            rotate([0, 0, 90]) crossbar();
-        translate([collapsed_x, 0, z_lower + collapsed_z_offset])
-            rotate([0, 0, 90]) crossbar();
+        translate([0, -collapsed_y, z_lower])
+            crossbar();
+        translate([0, collapsed_y, z_lower])
+            crossbar();
     }
     
     // Foot platforms rest on top
-    top_z = z_upper + collapsed_z_offset + arm_thickness/2 + foot_platform_thickness/2;
+    top_z = z_upper + arm_thickness/2 + foot_platform_thickness/2;
     color("DodgerBlue", 0.8) {
-        translate([-collapsed_x, 0, top_z])
-            foot_platform();
-        translate([collapsed_x, 0, top_z])
-            foot_platform();
+        translate([0, -collapsed_y, top_z])
+            rotate([0, 0, 90])
+                foot_platform();
+        translate([0, collapsed_y, top_z])
+            rotate([0, 0, 90])
+                foot_platform();
     }
     
     // Truck brackets below
-    bottom_z = z_lower - collapsed_z_offset - arm_thickness/2 - truck_bracket_thickness/2;
+    bottom_z = z_lower - arm_thickness/2 - truck_bracket_thickness/2;
     color("DimGray", 0.9) {
-        translate([-collapsed_x, 0, bottom_z])
-            truck_mount_bracket();
-        translate([collapsed_x, 0, bottom_z])
-            truck_mount_bracket();
+        translate([0, -collapsed_y, bottom_z])
+            rotate([0, 0, 90])
+                truck_mount_bracket();
+        translate([0, collapsed_y, bottom_z])
+            rotate([0, 0, 90])
+                truck_mount_bracket();
     }
 }

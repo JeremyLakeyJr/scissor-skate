@@ -9,7 +9,7 @@
  * with integrated foot platforms serve as the riding surface.
  * Truck mount brackets attach at the scissor arm endpoints.
  *
- * Assembly overview (extended position, side view):
+ * Assembly overview (extended position, top view):
  *
  *       [foot platform]        [foot platform]
  *     ----====----    ----====----
@@ -20,7 +20,8 @@
  *     [truck]--------[truck]
  *
  * Each "X" is a pair of crossing arms connected at the center pivot.
- * Multiple X-pairs sit side-by-side (Y axis) for board width.
+ * Multiple X-pairs sit side-by-side (X axis) for board width.
+ * Board extends along Y axis (direction of travel).
  */
 
 // ========================================
@@ -91,19 +92,19 @@ scissor_arm_length = deck_length_extended / 2 - 20;
 // Half-length from center pivot to endpoint
 arm_half = scissor_arm_length / 2 - arm_width / 2;
 
-// Extension angle: when extended, arms are nearly flat
-// The arm endpoint height offset = arm_half * sin(angle)
-// The arm endpoint horizontal offset = arm_half * cos(angle)
-extension_angle = 15;   // degrees from horizontal when extended
+// Extension angle: when extended, arms are nearly aligned with Y axis (direction of travel)
+// The arm endpoint Y offset = arm_half * cos(angle)
+// The arm endpoint X offset = arm_half * sin(angle)
+extension_angle = 15;   // degrees from Y axis when extended
 
-// Collapse angle: arms nearly vertical
-collapse_angle = 70;    // degrees from horizontal when collapsed
+// Collapse angle: arms rotated to reduce Y span
+collapse_angle = 70;    // degrees from Y axis when collapsed
 
-// Effective half-span when extended (center pivot to arm endpoint, horizontal)
+// Effective half-span when extended (center pivot to arm endpoint, along Y)
 extended_half_span = arm_half * cos(extension_angle);
 
-// Height from center pivot to arm endpoint when extended
-extended_height = arm_half * sin(extension_angle);
+// Lateral offset from center pivot to arm endpoint when extended (along X)
+extended_x_offset = arm_half * sin(extension_angle);
 
 // Total mechanism width (all arm pairs side-by-side)
 total_mechanism_width = num_scissor_pairs * arm_width + (num_scissor_pairs - 1) * arm_spacing;

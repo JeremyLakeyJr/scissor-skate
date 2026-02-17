@@ -88,26 +88,25 @@ module assembly() {
             wheel_diameter = 56; // mm (typical skateboard wheel)
             
             // Calculate truck bracket positions (must match scissor_mechanism_extended)
-            left_x = -arm_half * cos(extension_angle);
-            right_x = arm_half * cos(extension_angle);
-            z_upper = arm_thickness / 2;
+            // Board extends along Y; trucks at Y endpoints with axles along X
+            rear_y = -arm_half * cos(extension_angle);
+            front_y = arm_half * cos(extension_angle);
             z_lower = -arm_thickness / 2;
-            upper_ep_z = arm_half * sin(extension_angle);
             
-            left_truck_z = z_lower - upper_ep_z - arm_thickness/2 - truck_bracket_thickness - wheel_diameter/2;
-            right_truck_z = z_upper - upper_ep_z - arm_thickness/2 - truck_bracket_thickness - wheel_diameter/2;
+            // Truck brackets are flat below the lower crossbars
+            truck_z = z_lower - arm_thickness/2 - truck_bracket_thickness - wheel_diameter/2;
             
             color("DimGray", 0.6) {
-                // Left (rear) wheels
-                translate([left_x, -total_mechanism_width/2 - 15, left_truck_z])
-                    rotate([90, 0, 0]) cylinder(h=10, d=wheel_diameter, center=true, $fn=32);
-                translate([left_x, total_mechanism_width/2 + 15, left_truck_z])
-                    rotate([90, 0, 0]) cylinder(h=10, d=wheel_diameter, center=true, $fn=32);
-                // Right (front) wheels
-                translate([right_x, -total_mechanism_width/2 - 15, right_truck_z])
-                    rotate([90, 0, 0]) cylinder(h=10, d=wheel_diameter, center=true, $fn=32);
-                translate([right_x, total_mechanism_width/2 + 15, right_truck_z])
-                    rotate([90, 0, 0]) cylinder(h=10, d=wheel_diameter, center=true, $fn=32);
+                // Rear wheels (at rear_y, offset along X for truck axle width)
+                translate([-total_mechanism_width/2 - 15, rear_y, truck_z])
+                    rotate([0, 90, 0]) cylinder(h=10, d=wheel_diameter, center=true, $fn=32);
+                translate([total_mechanism_width/2 + 15, rear_y, truck_z])
+                    rotate([0, 90, 0]) cylinder(h=10, d=wheel_diameter, center=true, $fn=32);
+                // Front wheels (at front_y, offset along X for truck axle width)
+                translate([-total_mechanism_width/2 - 15, front_y, truck_z])
+                    rotate([0, 90, 0]) cylinder(h=10, d=wheel_diameter, center=true, $fn=32);
+                translate([total_mechanism_width/2 + 15, front_y, truck_z])
+                    rotate([0, 90, 0]) cylinder(h=10, d=wheel_diameter, center=true, $fn=32);
             }
         }
     } else {
