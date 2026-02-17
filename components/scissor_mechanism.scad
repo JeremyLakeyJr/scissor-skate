@@ -122,16 +122,45 @@ module crossbar() {
 
 // Flat pad with grip texture. Attaches to a crossbar via bolts through
 // matching holes. The rider stands on these.
+// Includes parametric concave curvature and optional nose/tail kick ramps
+// (set foot_concave_depth, kick_angle, and kick_length in parameters.scad).
 module foot_platform() {
     difference() {
-        // Main platform pad — rounded rectangle
-        hull() {
-            for (x = [-foot_platform_length/2 + 10, foot_platform_length/2 - 10]) {
-                for (y = [-foot_platform_width/2 + 10, foot_platform_width/2 - 10]) {
-                    translate([x, y, 0])
-                        cylinder(d=20, h=foot_platform_thickness, center=true, $fn=24);
+        union() {
+            // Main platform pad — rounded rectangle
+            hull() {
+                for (x = [-foot_platform_length/2 + 10, foot_platform_length/2 - 10]) {
+                    for (y = [-foot_platform_width/2 + 10, foot_platform_width/2 - 10]) {
+                        translate([x, y, 0])
+                            cylinder(d=20, h=foot_platform_thickness, center=true, $fn=24);
+                    }
                 }
             }
+
+            // Nose/tail kick ramps at each end
+            if (kick_angle > 0 && kick_length > 0) {
+                for (dir = [-1, 1]) {
+                    translate([dir * (foot_platform_length/2 - kick_length/2), 0, 0])
+                        rotate([0, dir * kick_angle, 0])
+                            hull() {
+                                for (y = [-foot_platform_width/2 + 10, foot_platform_width/2 - 10]) {
+                                    translate([0, y, 0])
+                                        cylinder(d=20, h=foot_platform_thickness, center=true, $fn=24);
+                                }
+                            }
+                }
+            }
+        }
+        
+        // Concave bowl — subtract a large inverted sphere to create a
+        // gentle bowl shape on the top surface (foot_concave_depth mm deep).
+        // Sphere radius from the spherical-cap formula: r = w²/(8d) + d/2
+        // where w = platform width and d = concave depth.
+        if (foot_concave_depth > 0) {
+            concave_r = (foot_platform_width * foot_platform_width) /
+                        (8 * foot_concave_depth) + foot_concave_depth / 2;
+            translate([0, 0, foot_platform_thickness/2 + concave_r - foot_concave_depth])
+                sphere(r=concave_r, $fn=64);
         }
         
         // Mounting holes — match crossbar pivot hole positions for bolt-through

@@ -16,7 +16,8 @@ Complete parts list for building your Scissor-Skate collapsible skateboard.
 | Locking Pins | 3 | PETG/PLA | 100% | No | 2 hrs | 25-35g |
 
 **Total Print Time**: ~31 hours  
-**Total Filament**: ~425-600g
+**Total Filament**: ~425-600g  
+**Estimated Assembled Weight**: ~400–600 g (printed parts only); ~1.2–1.6 kg with trucks, wheels, and hardware
 
 ### Print Settings Summary
 
@@ -24,7 +25,9 @@ Complete parts list for building your Scissor-Skate collapsible skateboard.
 Layer Height: 0.2mm
 Perimeters: 4-6 walls
 Top/Bottom: 5-6 layers
-Infill Pattern: Gyroid or Honeycomb
+Infill Pattern: Gyroid (recommended for best strength-to-weight ratio)
+Infill %: 40-60% (use 50-60% for arms and crossbars)
+Material: PETG or carbon-fiber PETG for structural parts; PLA for prototyping only
 Print Speed: 40-60 mm/s
 Brim: 8mm (recommended for large parts)
 ```
@@ -40,6 +43,22 @@ Brim: 8mm (recommended for large parts)
 | Bearings | 8 | ABEC 5-7 or better | $10-15 | Often included with wheels |
 | Truck Bolts | 8 | 1" or 1.25" length | $3-5 | Phillips or Allen head |
 | Locknuts | 8 | Standard skate nuts | Included | Usually come with bolts |
+
+### Pivot Hardware (Metal Shoulder Bolts — Recommended)
+
+> **Print-in-place pivot pins are for prototyping only.** Replace them with metal
+> shoulder bolts for any board that will bear rider weight.
+
+| Item | Quantity | Specification | Est. Cost | Notes |
+|------|----------|---------------|-----------|-------|
+| Shoulder Bolts | 14 | M5 × 10 mm shoulder (ISO 7379) | $10-20 | Shank ∅5 mm, shoulder length 10 mm |
+| Shoulder Bolt Nuts | 14 | M4 or M5 nyloc nut | $3-5 | Match bolt thread |
+| Flat Washers | 28 | M5 (∅10 mm OD) | $2-4 | One each side of joint |
+| Locking Bolts (optional) | 4 | M5 × 30 mm hex bolt | $2-3 | Alternative to printed locking pins |
+
+**Imperial alternative:** 10-24 × 3/8" shoulder bolts with matching nuts and washers.
+
+**Where to buy:** McMaster-Carr (91259A113), Amazon, Bolt Depot, or local hardware store.
 
 **Recommended Brands:**
 - **Trucks**: Independent, Thunder, Ace, Tensor
@@ -97,8 +116,9 @@ Brim: 8mm (recommended for large parts)
 | Wheels | Budget wheels (4) | $20 |
 | Bearings | ABEC 5 bearings | $10 |
 | Hardware | Bolts and nuts | $5 |
+| Shoulder Bolts | M5 shoulder bolts, nuts, washers | $15 |
 | Supplies | Threadlocker, sandpaper | $8 |
-| **Total** | | **~$84** |
+| **Total** | | **~$99** |
 
 ### Standard Build (~$100-150)
 
@@ -109,8 +129,9 @@ Brim: 8mm (recommended for large parts)
 | Wheels | Quality wheels (4) | $30 |
 | Bearings | ABEC 7 or ceramic | $15 |
 | Hardware | Bolts, nuts, risers | $8 |
+| Shoulder Bolts | M5 shoulder bolts, nuts, washers | $15 |
 | Supplies | Full assembly kit | $15 |
-| **Total** | | **~$119** |
+| **Total** | | **~$134** |
 
 ### Premium Build (~$150-200)
 
@@ -121,8 +142,9 @@ Brim: 8mm (recommended for large parts)
 | Wheels | Premium wheels (4) | $40 |
 | Bearings | Ceramic or Swiss | $30 |
 | Hardware | Premium bolts, risers, shock pads | $12 |
+| Shoulder Bolts | M5 shoulder bolts, nuts, washers | $15 |
 | Supplies | Complete toolkit + extras | $20 |
-| **Total** | | **~$180** |
+| **Total** | | **~$195** |
 
 ## 🧪 Material Options
 
