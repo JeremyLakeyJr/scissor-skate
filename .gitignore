@@ -1,0 +1,33 @@
+# OpenSCAD cache and output files
+*.stl
+*.3mf
+*.off
+*.amf
+*.dxf
+*.svg
+*.png
+*.csg
+
+# Backup files
+*~
+*.bak
+*.swp
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# IDE/Editor
+.vscode/
+.idea/
+*.sublime-*
+
+# Temporary files
+/tmp/
+temp/
+*.tmp
+
+# Build artifacts
+build/
+output/
+exports/
