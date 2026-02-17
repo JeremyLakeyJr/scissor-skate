@@ -135,7 +135,7 @@ For PLA (shear strength ~30 MPa):
 Maximum Shear Force: 50.3 mm² × 30 MPa = 1509 N (≈339 lbs)
 
 Safety Factor: 3× recommended (for dynamic skateboarding loads)
-Safe Working Load: ~500 N per pivot (≈112 lbs) per pin
+Safe Working Load: ~503 N per pivot (≈113 lbs) per pin
 
 For PETG (shear strength ~35 MPa):
 Maximum Shear Force: 50.3 mm² × 35 MPa = 1760 N (≈396 lbs)
@@ -285,7 +285,7 @@ The foot platforms bolt on top of the upper crossbars and provide the rider's st
 | Collapse Ratio | 2:1 | 1.85:1 |
 | Weight (no trucks) | < 2 kg | 1.5-1.8 kg |
 | Static Load Capacity | 200 lbs | 180-220 lbs* |
-| Recommended Max Rider Weight | 130 lbs | 100-150 lbs** |
+| Recommended Max Rider Weight | 130 lbs | 65-100 lbs** |
 | Fold Time | < 30 sec | 15-20 sec |
 | Lock Security | Zero slip | Zero slip*** |
 
@@ -297,7 +297,7 @@ The foot platforms bolt on top of the upper crossbars and provide the rider's st
 
 #### Mode 1: Pivot Pin Shear
 - **Cause**: Excessive lateral force or dynamic impact loads
-- **Prevention**: Use metal shoulder bolts (M5 or larger) instead of printed pins; increase `pivot_diameter` to 10mm for heavier riders
+- **Prevention**: Use metal shoulder bolts (M5 or larger) instead of printed pins; increase `pivot_diameter` to 10mm for heavier riders (recalculate shear strength using the formulas in the Pivot Pin Strength section above)
 - **Detection**: Cracks near pivot holes
 
 #### Mode 2: Crossbar Fracture

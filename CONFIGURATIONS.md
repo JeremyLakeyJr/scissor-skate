@@ -156,7 +156,7 @@ locking_slot_width = 12;             // 12mm slots
 |--------------|---------------------|--------|-------|
 | Compact Commuter | PETG or CF-PETG | 50-60% | Good for riders up to 150 lbs (static); apply 3× safety factor for riding |
 | Cruiser Board | PETG or Nylon | 50-60% | Good for riders up to 180 lbs (static); apply 3× safety factor for riding |
-| Mini Pocket | PETG or CF-PETG | 40-50% | Lightweight, riders up to 100 lbs only (2 arm pairs limit strength) |
+| Mini Pocket | PETG or CF-PETG | 40-50% | Riders up to 100 lbs only (2 arm pairs limit strength; stronger material needed to achieve even this reduced rating) |
 | Heavy-Duty | Nylon or CF-PETG | 60-80% | Riders up to 220+ lbs (static); best option for heavier riders |
 
 ## Print Time Estimates

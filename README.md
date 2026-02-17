@@ -258,7 +258,7 @@ Designed for riders up to 200 lbs (91 kg) **under static load** when using:
 - 3+ scissor arm pairs
 - Proper assembly with metal shoulder bolts at all pivots
 
-**Dynamic Load Warning**: Skateboarding involves dynamic forces of 2–3× body weight during pushing, turning, and landing. A 150 lb rider can generate 300–450 lbs of instantaneous force on the deck. Always apply a **safety factor of at least 3×** when estimating capacity for riding use. For example, a board rated for 200 lbs static should only be ridden by users up to ~130 lbs until extensively tested under dynamic conditions.
+**Dynamic Load Warning**: Skateboarding involves dynamic forces of 2–3× body weight during pushing, turning, and landing. A 150 lb rider can generate 300–450 lbs of instantaneous force on the deck. Always apply a **safety factor of at least 2×** beyond the expected dynamic load when estimating capacity. For example, a board rated for 200 lbs static should only be ridden by users up to ~65–100 lbs (200 lbs ÷ dynamic factor of 2–3×) until extensively tested under dynamic conditions.
 
 **Important**: Always test the mechanism with static weights before riding. Start with 50 lbs and increase in 25 lb increments. 3D printed parts have inherent limitations — layer adhesion is weaker than solid material. Use metal shoulder bolts for all pivots — printed pivot pins are for prototyping only.
 
