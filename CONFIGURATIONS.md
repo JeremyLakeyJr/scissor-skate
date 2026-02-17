@@ -7,30 +7,32 @@ This file contains pre-configured parameter sets for different use cases. Copy t
 Perfect for daily commuting and easy storage in a backpack.
 
 ```openscad
-// Skateboard dimensions
+// Overall board dimensions (when extended)
 deck_length_extended = 24 * 25.4;   // 24 inches (61cm)
 deck_width = 9 * 25.4;               // 9 inches (23cm)
-deck_thickness = 6;                  // 6mm platform
 
 // Collapsed dimensions
 collapsed_length = 13 * 25.4;        // 13 inches (33cm)
 collapsed_height = 80;               // 80mm vertical height
 
-// Scissor mechanism
-num_scissor_pairs = 2;               // 2 pairs of arms
-arm_width = 20;                      // 20mm arm width
-arm_thickness = 4;                   // 4mm arm thickness
-pivot_diameter = 6;                  // 6mm pivots
+// Scissor mechanism (arms ARE the riding surface)
+num_scissor_pairs = 3;               // 3 side-by-side pairs for width
+arm_width = 60;                      // 60mm arm width
+arm_thickness = 8;                   // 8mm arm thickness
+arm_spacing = 5;                     // 5mm gap between arm pairs
+pivot_diameter = 8;                  // 8mm pivots
 pivot_tolerance = 0.3;               // 0.3mm clearance
 
-// Deck surface
-deck_concave_depth = 8;              // 8mm concave
-deck_nose_tail_curve = 15;           // 15mm nose/tail kick
+// Foot platforms (flat pads on top of scissor arms)
+foot_platform_length = 100;          // 100mm foot pad length
+foot_platform_width = 200;           // 200mm foot pad width
+foot_platform_thickness = 4;         // 4mm platform thickness
+grip_texture_depth = 1;              // 1mm grip texture
 
-// Truck mounting
-truck_wheelbase = 15 * 25.4;         // 15 inches (38cm)
+// Truck mounting (brackets at scissor endpoints)
 truck_mounting_hole_diameter = 5;    // 5mm holes
 truck_mounting_pattern_width = 2.125 * 25.4;  // Standard pattern
+truck_bracket_thickness = 6;         // 6mm bracket thickness
 
 // Locking mechanism
 locking_pin_diameter = 8;            // 8mm locking pins
@@ -42,30 +44,32 @@ locking_slot_width = 10;             // 10mm slots
 Longer, more stable ride for casual cruising.
 
 ```openscad
-// Skateboard dimensions
+// Overall board dimensions (when extended)
 deck_length_extended = 28 * 25.4;   // 28 inches (71cm) - LONGER
 deck_width = 9.5 * 25.4;             // 9.5 inches (24cm) - WIDER
-deck_thickness = 7;                  // 7mm platform - THICKER
 
 // Collapsed dimensions
 collapsed_length = 15 * 25.4;        // 15 inches (38cm)
 collapsed_height = 90;               // 90mm vertical height
 
-// Scissor mechanism
-num_scissor_pairs = 3;               // 3 pairs - STRONGER
-arm_width = 22;                      // 22mm arm width - WIDER
-arm_thickness = 5;                   // 5mm arm thickness - THICKER
-pivot_diameter = 7;                  // 7mm pivots - LARGER
+// Scissor mechanism (arms ARE the riding surface)
+num_scissor_pairs = 4;               // 4 side-by-side pairs - WIDER
+arm_width = 65;                      // 65mm arm width - WIDER
+arm_thickness = 9;                   // 9mm arm thickness - THICKER
+arm_spacing = 5;                     // 5mm gap between arm pairs
+pivot_diameter = 9;                  // 9mm pivots - LARGER
 pivot_tolerance = 0.3;               // 0.3mm clearance
 
-// Deck surface
-deck_concave_depth = 10;             // 10mm concave - DEEPER
-deck_nose_tail_curve = 18;           // 18mm nose/tail kick
+// Foot platforms (flat pads on top of scissor arms)
+foot_platform_length = 120;          // 120mm foot pad length - LONGER
+foot_platform_width = 220;           // 220mm foot pad width - WIDER
+foot_platform_thickness = 5;         // 5mm platform thickness - THICKER
+grip_texture_depth = 1;              // 1mm grip texture
 
-// Truck mounting
-truck_wheelbase = 18 * 25.4;         // 18 inches (46cm) - LONGER
+// Truck mounting (brackets at scissor endpoints)
 truck_mounting_hole_diameter = 5;
 truck_mounting_pattern_width = 2.125 * 25.4;
+truck_bracket_thickness = 7;         // 7mm bracket thickness - THICKER
 
 // Locking mechanism
 locking_pin_diameter = 9;            // 9mm locking pins - LARGER
@@ -77,30 +81,32 @@ locking_slot_width = 11;             // 11mm slots
 Ultra-compact for maximum portability.
 
 ```openscad
-// Skateboard dimensions
+// Overall board dimensions (when extended)
 deck_length_extended = 20 * 25.4;   // 20 inches (51cm) - SHORTER
 deck_width = 8 * 25.4;               // 8 inches (20cm) - NARROWER
-deck_thickness = 5;                  // 5mm platform - THINNER
 
 // Collapsed dimensions
 collapsed_length = 11 * 25.4;        // 11 inches (28cm) - VERY COMPACT
 collapsed_height = 70;               // 70mm vertical height
 
-// Scissor mechanism
-num_scissor_pairs = 2;               // 2 pairs
-arm_width = 18;                      // 18mm arm width - NARROWER
-arm_thickness = 4;                   // 4mm arm thickness
-pivot_diameter = 5;                  // 5mm pivots - SMALLER
+// Scissor mechanism (arms ARE the riding surface)
+num_scissor_pairs = 2;               // 2 side-by-side pairs - NARROWER
+arm_width = 50;                      // 50mm arm width - NARROWER
+arm_thickness = 7;                   // 7mm arm thickness - THINNER
+arm_spacing = 5;                     // 5mm gap between arm pairs
+pivot_diameter = 7;                  // 7mm pivots - SMALLER
 pivot_tolerance = 0.3;               // 0.3mm clearance
 
-// Deck surface
-deck_concave_depth = 6;              // 6mm concave - SHALLOW
-deck_nose_tail_curve = 12;           // 12mm nose/tail kick
+// Foot platforms (flat pads on top of scissor arms)
+foot_platform_length = 80;           // 80mm foot pad length - SHORTER
+foot_platform_width = 160;           // 160mm foot pad width - NARROWER
+foot_platform_thickness = 3;         // 3mm platform thickness - THINNER
+grip_texture_depth = 0.8;            // 0.8mm grip texture
 
-// Truck mounting
-truck_wheelbase = 12 * 25.4;         // 12 inches (30cm) - SHORTER
+// Truck mounting (brackets at scissor endpoints)
 truck_mounting_hole_diameter = 5;
 truck_mounting_pattern_width = 2.125 * 25.4;
+truck_bracket_thickness = 5;         // 5mm bracket thickness
 
 // Locking mechanism
 locking_pin_diameter = 7;            // 7mm locking pins
@@ -112,30 +118,32 @@ locking_slot_width = 9;              // 9mm slots
 Maximum strength for heavier riders or rough terrain.
 
 ```openscad
-// Skateboard dimensions
+// Overall board dimensions (when extended)
 deck_length_extended = 32 * 25.4;   // 32 inches (81cm) - LONGBOARD
 deck_width = 10 * 25.4;              // 10 inches (25cm) - WIDE
-deck_thickness = 8;                  // 8mm platform - VERY THICK
 
 // Collapsed dimensions
 collapsed_length = 17 * 25.4;        // 17 inches (43cm)
 collapsed_height = 100;              // 100mm vertical height
 
-// Scissor mechanism
-num_scissor_pairs = 4;               // 4 pairs - MAXIMUM STRENGTH
-arm_width = 25;                      // 25mm arm width - WIDE
-arm_thickness = 6;                   // 6mm arm thickness - VERY THICK
-pivot_diameter = 8;                  // 8mm pivots - LARGE
+// Scissor mechanism (arms ARE the riding surface)
+num_scissor_pairs = 5;               // 5 side-by-side pairs - MAXIMUM WIDTH
+arm_width = 70;                      // 70mm arm width - WIDE
+arm_thickness = 10;                  // 10mm arm thickness - VERY THICK
+arm_spacing = 5;                     // 5mm gap between arm pairs
+pivot_diameter = 10;                 // 10mm pivots - LARGE
 pivot_tolerance = 0.3;               // 0.3mm clearance
 
-// Deck surface
-deck_concave_depth = 12;             // 12mm concave - DEEP
-deck_nose_tail_curve = 20;           // 20mm nose/tail kick
+// Foot platforms (flat pads on top of scissor arms)
+foot_platform_length = 130;          // 130mm foot pad length - LONGER
+foot_platform_width = 240;           // 240mm foot pad width - WIDER
+foot_platform_thickness = 6;         // 6mm platform thickness - THICK
+grip_texture_depth = 1.2;            // 1.2mm grip texture - DEEPER
 
-// Truck mounting
-truck_wheelbase = 22 * 25.4;         // 22 inches (56cm) - LONG
+// Truck mounting (brackets at scissor endpoints)
 truck_mounting_hole_diameter = 5;
 truck_mounting_pattern_width = 2.125 * 25.4;
+truck_bracket_thickness = 8;         // 8mm bracket thickness - THICK
 
 // Locking mechanism
 locking_pin_diameter = 10;           // 10mm locking pins - LARGE
@@ -153,19 +161,19 @@ locking_slot_width = 12;             // 12mm slots
 
 ## Print Time Estimates
 
-Based on 0.2mm layer height, 50% infill:
+Based on 0.2mm layer height, 50% infill. All parts print flat without supports.
 
-- **Compact Commuter**: ~35 hours total
-- **Cruiser Board**: ~45 hours total  
-- **Mini Pocket**: ~25 hours total
-- **Heavy-Duty**: ~60 hours total
+- **Compact Commuter**: ~30 hours total
+- **Cruiser Board**: ~40 hours total
+- **Mini Pocket**: ~20 hours total
+- **Heavy-Duty**: ~55 hours total
 
 ## Filament Usage Estimates
 
-- **Compact Commuter**: ~600g
-- **Cruiser Board**: ~800g
-- **Mini Pocket**: ~400g
-- **Heavy-Duty**: ~1200g
+- **Compact Commuter**: ~500g
+- **Cruiser Board**: ~700g
+- **Mini Pocket**: ~350g
+- **Heavy-Duty**: ~1100g
 
 ## Quick Switching Between Configurations
 
@@ -184,12 +192,12 @@ To quickly try a different configuration:
 ### For Taller/Shorter Riders
 - Taller riders: Increase `deck_length_extended` by 2-4 inches
 - Shorter riders: Decrease by 2-3 inches
-- Adjust `truck_wheelbase` proportionally (60-70% of deck length)
+- Adjust `foot_platform_length` proportionally for comfort
 
-### For More/Less Concave
-- Standard skateboards: 6-8mm concave
-- Street skating: 8-12mm concave (more control)
-- Cruising: 4-6mm concave (more comfort)
+### For More/Less Grip
+- More grip: Increase `grip_texture_depth` (1-1.5mm)
+- Less grip: Decrease `grip_texture_depth` (0.5-0.8mm)
+- Wider foot pads: Increase `foot_platform_width`
 
 ### For Different Wheel Sizes
 - Small wheels (50-54mm): Use mini or compact config
@@ -199,13 +207,13 @@ To quickly try a different configuration:
 ### For Improved Portability
 - Minimize `collapsed_length` (but keep > 50% of extended length)
 - Reduce `collapsed_height` (but keep structural integrity)
-- Reduce `deck_thickness` slightly (minimum 5mm recommended)
+- Reduce `num_scissor_pairs` (minimum 2 recommended)
 
 ### For Maximum Strength
-- Increase `num_scissor_pairs` (3-4 pairs)
-- Increase `arm_thickness` (5-7mm)
-- Increase `arm_width` (22-28mm)
-- Increase `deck_thickness` (7-10mm)
+- Increase `num_scissor_pairs` (4-5 pairs)
+- Increase `arm_thickness` (9-12mm)
+- Increase `arm_width` (65-80mm)
+- Increase `foot_platform_thickness` (5-7mm)
 - Use higher infill (60-80%)
 - Use stronger materials (Nylon, carbon fiber reinforced)
 
@@ -214,10 +222,11 @@ To quickly try a different configuration:
 Before committing to a full print:
 
 1. **Quick Preview** (F5): Check proportions visually
-2. **Print One Scissor Arm**: Test mechanism scale
+2. **Print One Scissor Arm**: Test mechanism scale and fit
 3. **Print Pivot Pins**: Verify tolerance fit
-4. **Full Render** (F6): Check for errors
-5. **Measure STL**: Verify dimensions in slicer
-6. **Print Remaining Parts**: Once validated
+4. **Print One Foot Platform**: Check comfort and grip texture
+5. **Full Render** (F6): Check for errors
+6. **Measure STL**: Verify dimensions in slicer
+7. **Print Remaining Parts**: Once validated
 
 Happy customizing! 🎨
