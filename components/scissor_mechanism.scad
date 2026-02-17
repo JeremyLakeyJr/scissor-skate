@@ -47,15 +47,11 @@ use <truck_mounting.scad>
 
 // One arm with 3 pivot holes: left end, center, right end.
 // The arm is oriented along the X axis, flat on XY plane.
+// Rectangular cross-section for maximum strength and clean look.
 module scissor_arm() {
     difference() {
-        // Main arm body — wide and flat for standing on
-        hull() {
-            translate([-(scissor_arm_length/2 - arm_width/2), 0, 0])
-                cylinder(d=arm_width, h=arm_thickness, center=true, $fn=48);
-            translate([(scissor_arm_length/2 - arm_width/2), 0, 0])
-                cylinder(d=arm_width, h=arm_thickness, center=true, $fn=48);
-        }
+        // Main arm body — thick rectangular bar for standing on
+        cube([scissor_arm_length, arm_width, arm_thickness], center=true);
         
         // Left endpoint pivot hole
         translate([-(scissor_arm_length/2 - arm_width/2), 0, 0])
@@ -96,13 +92,8 @@ module crossbar() {
     crossbar_thickness = arm_thickness;             // same thickness for strength
     
     difference() {
-        // Main crossbar body
-        hull() {
-            translate([0, -crossbar_length/2, 0])
-                cylinder(d=crossbar_width, h=crossbar_thickness, center=true, $fn=48);
-            translate([0, crossbar_length/2, 0])
-                cylinder(d=crossbar_width, h=crossbar_thickness, center=true, $fn=48);
-        }
+        // Main crossbar body — rectangular for strength
+        cube([crossbar_width, crossbar_length, crossbar_thickness], center=true);
         
         // Pivot holes — one for each scissor pair's arm endpoint
         for (p = [0 : num_scissor_pairs - 1]) {

@@ -82,7 +82,7 @@ collapsed_length = 13 * 25.4;       // ~13 inches when folded
 // Scissor mechanism (arms ARE the deck)
 num_scissor_pairs = 3;              // Number of side-by-side arm pairs
 arm_width = 60;                     // mm (wide — you stand on these)
-arm_thickness = 8;                  // mm (thick for rider weight)
+arm_thickness = 12;                 // mm (thick rectangular arms for rider weight)
 
 // Foot platform (pads on top of scissor arms)
 foot_platform_length = 100;         // mm

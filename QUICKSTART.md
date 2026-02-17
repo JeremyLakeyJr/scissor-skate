@@ -58,7 +58,7 @@ deck_length_extended = 24 * 25.4;  // Change to 28 for longer board
 deck_width = 9 * 25.4;              // Change to 10 for wider board
 num_scissor_pairs = 3;              // Change to 4 for stronger/wider build
 arm_width = 60;                     // mm — width of each arm (you stand on these)
-arm_thickness = 8;                  // mm — thickness for rider weight
+arm_thickness = 12;                 // mm — thickness for rider weight (rectangular)
 ```
 
 **Or** copy a pre-made config from `CONFIGURATIONS.md`

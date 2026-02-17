@@ -19,7 +19,7 @@ A complete, parametric 3D-printable collapsible skateboard deck design that uses
 
 ✅ **Collapsible Mechanism**
 - Scissor-lift/pantograph design with 3 side-by-side pairs of crossing arms
-- Scissor Arms: 60mm wide, 8mm thick
+- Scissor Arms: 60mm wide, 12mm thick, rectangular cross-section
 - Smooth fold/unfold operation via pivot joints
 - Collapses from 24" (610mm) to 13" (330mm) - 1.85:1 ratio
 

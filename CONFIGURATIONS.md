@@ -18,7 +18,7 @@ collapsed_height = 80;               // 80mm vertical height
 // Scissor mechanism (arms ARE the riding surface)
 num_scissor_pairs = 3;               // 3 side-by-side pairs for width
 arm_width = 60;                      // 60mm arm width
-arm_thickness = 8;                   // 8mm arm thickness
+arm_thickness = 12;                  // 12mm arm thickness (rectangular)
 arm_spacing = 5;                     // 5mm gap between arm pairs
 pivot_diameter = 8;                  // 8mm pivots
 pivot_tolerance = 0.3;               // 0.3mm clearance
