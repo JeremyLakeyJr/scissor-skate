@@ -154,6 +154,8 @@ module foot_platform() {
         
         // Concave bowl — subtract a large inverted sphere to create a
         // gentle bowl shape on the top surface (foot_concave_depth mm deep).
+        // Sphere radius from the spherical-cap formula: r = w²/(8d) + d/2
+        // where w = platform width and d = concave depth.
         if (foot_concave_depth > 0) {
             concave_r = (foot_platform_width * foot_platform_width) /
                         (8 * foot_concave_depth) + foot_concave_depth / 2;
