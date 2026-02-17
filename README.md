@@ -1,10 +1,10 @@
-# Scissor-Skate: Collapsible Skateboard Deck
+# Scissor-Skate: Collapsible Skateboard
 
-A portable, collapsible skateboard deck incorporating a scissor-lift (pantograph) mechanism that folds and unfolds for compact storage and transport.
+A portable, collapsible skateboard that uses a scissor-lift (pantograph) mechanism for the deck itself — **you stand directly on the scissor mechanism while skating**. No separate top or bottom deck platforms. The wide, sturdy scissor arms with integrated foot platforms ARE the riding surface.
 
 ## 🖼️ Renders
 
-### Finished Product — Extended (Rideable)
+### Extended (Rideable) — Stand on the Scissor Mechanism
 
 ![Assembly Extended](screenshots/assembly_extended.png)
 
@@ -14,13 +14,13 @@ A portable, collapsible skateboard deck incorporating a scissor-lift (pantograph
 
 ### Individual Components
 
-| Deck Top | Deck Bottom |
-|----------|-------------|
-| ![Deck Top](screenshots/deck_top.png) | ![Deck Bottom](screenshots/deck_bottom.png) |
+| Scissor Arms | Foot Platform | Truck Bracket |
+|--------------|---------------|---------------|
+| ![Scissor Arms](screenshots/scissor_arms.png) | ![Foot Platform](screenshots/foot_platform.png) | ![Truck Bracket](screenshots/truck_bracket.png) |
 
-| Scissor Arms | Pivot Pin | Lock Mechanism |
-|--------------|-----------|----------------|
-| ![Scissor Arms](screenshots/scissor_arms.png) | ![Pivot Pin](screenshots/pivot_pin.png) | ![Lock Mechanism](screenshots/lock_mechanism.png) |
+| Pivot Pin | Lock Mechanism |
+|-----------|----------------|
+| ![Pivot Pin](screenshots/pivot_pin.png) | ![Lock Mechanism](screenshots/lock_mechanism.png) |
 
 ## 📐 Design Specifications
 
@@ -33,18 +33,19 @@ A portable, collapsible skateboard deck incorporating a scissor-lift (pantograph
 ### Extended Dimensions
 - **Length**: ~20-28 inches (508-711mm) - full rideable skateboard
 - **Width**: ~8-10 inches (203-254mm)
-- **Profile**: Standard skateboard deck platform
+- **Profile**: Rideable scissor mechanism with foot platforms
 
 ## 🎯 Features
 
+- **Stand on the Scissor Mechanism**: No separate deck — ride directly on the collapsing scissor arms
+- **Foot Platforms with Grip**: Textured pads on top of scissor arms for secure footing
 - **Parametric OpenSCAD Design**: Fully customizable through variables
 - **Scissor-Lift Mechanism**: Pantograph design for smooth folding/unfolding
 - **3D Printable**: Designed for PLA, PETG, or tougher filaments
-- **Print-in-Place or Modular**: Options for smooth pivoting joints
-- **Integrated Truck Mounts**: Standard skateboard truck mounting patterns
-- **Manual Locking System**: Screw/pin mechanism for secure riding position
-- **Lightweight Structure**: Weight reduction features built-in
-- **Concave Deck Surface**: Comfortable riding profile
+- **Modular Assembly**: Separate printable components with pivot pin connections
+- **Truck Mount Brackets**: Standard skateboard truck mounting at scissor endpoints
+- **Manual Locking System**: Pin mechanism for secure riding position
+- **Lightweight Structure**: Efficient arm geometry, no unnecessary material
 
 ## 🛠️ Building Your Scissor-Skate
 
@@ -62,24 +63,25 @@ A portable, collapsible skateboard deck incorporating a scissor-lift (pantograph
 Open `scissor_skate.scad` in OpenSCAD and adjust the parameters. Parameters are defined in `components/parameters.scad`:
 
 ```openscad
-// Skateboard dimensions
+// Overall board dimensions (when extended)
 deck_length_extended = 24 * 25.4;  // 24 inches in mm
 deck_width = 9 * 25.4;              // 9 inches in mm
 
 // Collapsed dimensions  
 collapsed_length = 13 * 25.4;       // ~13 inches when folded
 
-// Scissor mechanism
-num_scissor_pairs = 2;              // Number of scissor arm pairs
-arm_width = 20;                     // mm
-arm_thickness = 4;                  // mm
+// Scissor mechanism (arms ARE the deck)
+num_scissor_pairs = 3;              // Number of side-by-side arm pairs
+arm_width = 60;                     // mm (wide — you stand on these)
+arm_thickness = 8;                  // mm (thick for rider weight)
 
-// Deck surface
-deck_concave_depth = 8;             // mm
-deck_nose_tail_curve = 15;          // mm
+// Foot platform (pads on top of scissor arms)
+foot_platform_length = 100;         // mm
+foot_platform_width = 200;          // mm
 
-// Truck mounting
-truck_wheelbase = 15 * 25.4;        // 15 inches between trucks
+// Truck mounting (at scissor endpoints)
+truck_mounting_hole_diameter = 5;   // mm
+truck_mounting_pattern_width = 2.125 * 25.4;  // Standard pattern
 ```
 
 ### Project Structure
@@ -91,21 +93,14 @@ scissor-skate/
 ├── scissor_skate.scad              # Main entry point (assembly + render modes)
 ├── components/
 │   ├── parameters.scad             # All configurable parameters
-│   ├── deck_surface.scad           # Deck surface shape module
+│   ├── scissor_mechanism.scad      # Scissor arms, foot platforms, truck brackets
 │   ├── truck_mounting.scad         # Truck mounting hole pattern
-│   ├── deck_top.scad               # Top deck platform
-│   ├── deck_bottom.scad            # Bottom deck platform
-│   ├── scissor_mechanism.scad      # Scissor arms and mechanism
+│   ├── deck_surface.scad           # Deck surface shape (utility module)
+│   ├── deck_top.scad               # (Legacy) Top deck platform
+│   ├── deck_bottom.scad            # (Legacy) Bottom deck platform
 │   ├── pivot_pin.scad              # Pivot pin for joints
 │   └── lock_mechanism.scad         # Locking pin
 ├── screenshots/                    # Rendered images of the design
-│   ├── assembly_extended.png       # Finished product render (extended)
-│   ├── assembly_collapsed.png      # Collapsed view render
-│   ├── deck_top.png                # Deck top component
-│   ├── deck_bottom.png             # Deck bottom component
-│   ├── scissor_arms.png            # Scissor arms component
-│   ├── pivot_pin.png               # Pivot pin component
-│   └── lock_mechanism.png          # Lock mechanism component
 ├── README.md                       # This file
 ├── QUICKSTART.md                   # Quick start guide
 ├── CONFIGURATIONS.md               # Pre-made configurations
@@ -123,30 +118,37 @@ scissor-skate/
 Change the `render_mode` variable to export different parts:
 
 ```openscad
-render_mode = "deck_top";      // Options: "assembly", "deck_top", "deck_bottom", 
-                                // "scissor_arms", "pivot_pins", "lock_mechanism"
+render_mode = "scissor_arms";  // Options: "assembly", "exploded", "scissor_arms",
+                               //          "crossbar", "foot_platform", "truck_bracket",
+                               //          "pivot_pins", "lock_mechanism"
 ```
+
+**Tip:** Use `render_mode = "exploded"` to see an exploded view of all parts for assembly reference.
 
 #### Components to Print:
 
-1. **Deck Top Platform** (`render_mode = "deck_top"`)
-   - Main riding surface with concave and truck mounts
-   - May need to be split into multiple pieces if larger than your print bed
+1. **Scissor Arms** (`render_mode = "scissor_arms"`)
+   - Wide, flat arms that form the riding surface
+   - Print quantity: `num_scissor_pairs * 4` (default: 12)
 
-2. **Deck Bottom Platform** (`render_mode = "deck_bottom"`)
-   - Lower structural platform
-   - Includes weight reduction features
+2. **Crossbars** (`render_mode = "crossbar"`)
+   - Connect arm endpoints across all side-by-side pairs
+   - Print quantity: 4 (2 upper + 2 lower)
 
-3. **Scissor Arms** (`render_mode = "scissor_arms"`)
-   - Print 4 arms per pair (2 pairs minimum)
-   - Print quantity: `num_scissor_pairs * 4`
+3. **Foot Platforms** (`render_mode = "foot_platform"`)
+   - Textured grip pads, bolt on top of upper crossbars
+   - Print quantity: 2 (front and rear)
 
-4. **Pivot Pins** (`render_mode = "pivot_pins"`)
-   - Connect scissor arms to deck and each other
-   - Print quantity: ~6-8 pins per scissor pair
+4. **Truck Mount Brackets** (`render_mode = "truck_bracket"`)
+   - Standard truck hole pattern, bolt below lower crossbars
+   - Print quantity: 2 (front and rear)
 
-5. **Locking Pins** (`render_mode = "lock_mechanism"`)
-   - Secures the deck in extended position
+5. **Pivot Pins** (`render_mode = "pivot_pins"`)
+   - Connect scissor arms at center and endpoint pivots
+   - Print quantity: ~10-14 pins total
+
+6. **Locking Pins** (`render_mode = "lock_mechanism"`)
+   - Secures the mechanism in extended position
    - Print quantity: 2-4 pins
 
 ### Step 3: Export STL Files
@@ -156,17 +158,17 @@ For each component:
 1. Set the appropriate `render_mode`
 2. Press **F6** to render (may take a few minutes)
 3. **File → Export → Export as STL**
-4. Save with descriptive name (e.g., `deck_top.stl`, `scissor_arm.stl`)
+4. Save with descriptive name (e.g., `scissor_arm.stl`, `crossbar.stl`)
 
 ### Step 4: 3D Printing Settings
 
 #### Recommended Settings:
 ```
 Layer Height: 0.2mm (0.3mm for faster, less detailed prints)
-Infill: 30-50% (higher for structural parts)
+Infill: 40-60% (higher for structural scissor arms and crossbars)
 Wall Count: 4-6 perimeters
 Top/Bottom Layers: 5-6 layers
-Support: Yes (for deck platforms)
+Support: No (all parts print flat without supports)
 Adhesion: Brim recommended for larger parts
 ```
 
@@ -174,16 +176,23 @@ Adhesion: Brim recommended for larger parts
 1. Start with one scissor arm to test pivot hole tolerances
 2. Print pivot pins and test fit
 3. Adjust `pivot_tolerance` if needed (default 0.3mm)
-4. Print remaining scissor arms
-5. Print deck platforms (may need to split if too large)
+4. Print remaining scissor arms (12 total for 3 pairs)
+5. Print 4 crossbars
+6. Print 2 foot platforms and 2 truck brackets
 
 ### Step 5: Assembly
 
-1. **Insert Pivot Pins**: Connect scissor arms at their pivot points
-2. **Attach to Deck Platforms**: Connect scissor mechanism to top and bottom platforms using pivot pins
-3. **Test Mechanism**: Ensure smooth folding/unfolding motion
-4. **Add Locking Pins**: Install locking mechanism for extended position
-5. **Mount Trucks and Wheels**: Use standard skateboard trucks and wheels
+Use `render_mode = "exploded"` in OpenSCAD for a visual assembly reference.
+
+1. **Cross two scissor arms** at their center pivot holes, insert a center pivot pin
+2. **Repeat for each scissor pair** — 3 pairs arranged side by side
+3. **Attach lower crossbars**: insert pivot pins through the lower arm endpoints and crossbar holes (one crossbar at each end)
+4. **Attach upper crossbars**: insert pivot pins through the upper arm endpoints and crossbar holes
+5. **Test mechanism**: pull crossbars apart to extend, push together to collapse — should move smoothly
+6. **Insert locking pins**: push locking pins through aligned holes in crossbars and arms to secure extended position
+7. **Bolt foot platforms** on top of upper crossbars using M5 bolts through mounting holes
+8. **Bolt truck brackets** below lower crossbars using M5 bolts through mounting holes
+9. **Mount trucks and wheels**: attach standard skateboard trucks to the truck brackets
 
 #### Tools Needed:
 - Small mallet (for pressing in pivot pins if tight)
@@ -200,22 +209,24 @@ Want a longer or shorter board? Modify these parameters:
 ```openscad
 deck_length_extended = 28 * 25.4;  // Longer board (28 inches)
 collapsed_length = 15 * 25.4;       // Adjust collapsed size proportionally
-truck_wheelbase = 18 * 25.4;        // Adjust truck spacing
 ```
 
-### Changing Concave Profile
+### Adjusting Arm Strength
+
+For heavier riders or more aggressive skating:
 
 ```openscad
-deck_concave_depth = 12;            // Deeper concave (12mm)
-deck_nose_tail_curve = 20;          // More pronounced nose/tail kick
+num_scissor_pairs = 4;              // More side-by-side pairs = wider, stronger
+arm_thickness = 10;                 // Thicker arms = more rigid
+arm_width = 70;                     // Wider arms = more surface area
 ```
 
-### Adjusting Mechanism Strength
+### Adjusting Foot Platforms
 
 ```openscad
-num_scissor_pairs = 3;              // More pairs = stronger, heavier
-arm_thickness = 5;                  // Thicker arms = stronger, more rigid
-arm_width = 25;                     // Wider arms = more stability
+foot_platform_length = 120;         // Longer foot pads
+foot_platform_width = 220;          // Wider foot pads
+grip_texture_depth = 1.5;           // Deeper grip texture
 ```
 
 ### Print Tolerance Adjustment
@@ -229,21 +240,25 @@ pivot_tolerance = 0.2;              // Decrease for tighter fit
 
 ## 📊 Technical Details
 
+### Design Concept
+
+**No separate deck platforms.** The rider stands directly on the scissor mechanism itself. Wide scissor arms (60mm default) arranged in multiple side-by-side pairs (3 default) create a stable riding surface. Foot platforms with grip texture sit on top of the arms at the front and rear foot positions.
+
 ### Scissor Mechanism Design
 
-The pantograph mechanism works by having crossing arms that pivot at:
-- Fixed points on the deck platforms
-- Center crossing points that slide
+The pantograph mechanism uses crossing arms that pivot at:
+- Center crossing points
+- Outer endpoints (where truck brackets attach)
 - Connection points that constrain the motion
 
-When extended, the arms spread to their maximum angle (~25°), creating the full deck length.
-When collapsed, the arms fold nearly vertical (~75°), reducing the overall length by approximately 50%.
+When extended, the arms spread to their maximum angle (~15° from horizontal), creating the full riding length.
+When collapsed, the arms fold nearly vertical (~70°), reducing the overall length by approximately 50%.
 
 ### Material Requirements
 
 For a standard build:
-- **PLA/PETG Filament**: ~500-800g total
-- **Print Time**: 30-50 hours total (depending on settings)
+- **PLA/PETG Filament**: ~400-600g total
+- **Print Time**: 25-40 hours total (depending on settings)
 - **Skateboard Trucks**: 2 standard trucks
 - **Wheels**: 4 skateboard wheels (52-60mm recommended)
 - **Hardware**: 8 bolts and nuts for truck mounting
@@ -282,8 +297,9 @@ Designed for riders up to 200 lbs (91 kg) when using:
 ### Deck Too Flexible
 - Increase infill percentage to 60-80%
 - Add more wall perimeters (6-8)
-- Increase `deck_thickness` parameter
-- Add more scissor arm pairs
+- Increase `arm_thickness` parameter
+- Add more scissor arm pairs (`num_scissor_pairs`)
+- Use stronger filament (PETG, Nylon)
 
 ### Won't Lock in Extended Position
 - Check locking pin alignment

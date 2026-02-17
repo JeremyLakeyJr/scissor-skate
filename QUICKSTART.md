@@ -56,7 +56,9 @@ Edit the parameters at the top of `scissor_skate.scad`:
 ```openscad
 deck_length_extended = 24 * 25.4;  // Change to 28 for longer board
 deck_width = 9 * 25.4;              // Change to 10 for wider board
-num_scissor_pairs = 2;              // Change to 3 for stronger build
+num_scissor_pairs = 3;              // Change to 4 for stronger/wider build
+arm_width = 60;                     // mm — width of each arm (you stand on these)
+arm_thickness = 8;                  // mm — thickness for rider weight
 ```
 
 **Or** copy a pre-made config from `CONFIGURATIONS.md`
@@ -73,17 +75,20 @@ num_scissor_pairs = 2;              // Change to 3 for stronger build
 
 For each component:
 
-1. Change `render_mode = "deck_top"` (or other component name)
+1. Change `render_mode = "scissor_arms"` (or other component name)
 2. Press **F6** to render (wait 2-5 minutes)
 3. File → Export → Export as STL
-4. Save as `deck_top.stl`
+4. Save as `scissor_arms.stl`
 
 Repeat for:
-- `deck_top` → `deck_top.stl`
-- `deck_bottom` → `deck_bottom.stl`
 - `scissor_arms` → `scissor_arms.stl`
+- `crossbar` → `crossbar.stl`
+- `foot_platform` → `foot_platform.stl`
+- `truck_bracket` → `truck_bracket.stl`
 - `pivot_pins` → `pivot_pins.stl`
 - `lock_mechanism` → `lock_mechanism.stl`
+
+**Tip:** Use `render_mode = "exploded"` to see how all parts fit together.
 
 ## 🖨️ Print Settings Cheat Sheet
 
@@ -92,24 +97,26 @@ Repeat for:
 Material: PETG
 Layer Height: 0.2mm
 Infill: 50%
-Supports: Yes
+Supports: No
 Brim: 8mm
 Nozzle Temp: 235°C
 Bed Temp: 80°C
 ```
 
 ### Print Quantities
-- Deck Top: **1**
-- Deck Bottom: **1**
-- Scissor Arms: **8** (4 per pair, 2 pairs)
-- Pivot Pins: **12-16**
+- Scissor Arms: **12** (4 per pair, 3 pairs)
+- Crossbars: **4** (2 upper + 2 lower)
+- Foot Platforms: **2**
+- Truck Mount Brackets: **2**
+- Pivot Pins: **10-14**
 - Locking Pins: **2-4**
 
 ### Print Time Estimate
-- **Total**: ~35-40 hours
-- **Deck Top**: ~12 hours
-- **Deck Bottom**: ~10 hours
-- **All Scissor Arms**: ~10 hours
+- **Total**: ~27-35 hours
+- **All Scissor Arms**: ~14 hours
+- **Crossbars**: ~4 hours
+- **Foot Platforms**: ~4 hours
+- **Truck Brackets**: ~3 hours
 - **Pins**: ~3-5 hours
 
 ## 🔧 Assembly Cheat Sheet
@@ -121,13 +128,17 @@ Bed Temp: 80°C
 - Mounting bolts (8)
 
 ### Assembly Steps
-1. **Connect scissor arms** with pivot pins at center
-2. **Attach to lower deck** with pivot pins
-3. **Attach upper deck** with pivot pins
-4. **Test mechanism** - should fold/unfold smoothly
-5. **Install locking pins**
-6. **Mount trucks and wheels**
-7. **Test ride!** (start slow)
+1. **Cross two scissor arms** at their center pivot holes, insert center pivot pin
+2. **Repeat for each scissor pair** (3 pairs side by side)
+3. **Attach lower crossbars** to bottom arm endpoints with pivot pins
+4. **Attach upper crossbars** to top arm endpoints with pivot pins
+5. **Insert locking pins** through crossbar and arm locking holes
+6. **Bolt foot platforms** on top of upper crossbars
+7. **Bolt truck brackets** below lower crossbars
+8. **Mount trucks and wheels** to truck brackets
+9. **Test ride!** (start slow)
+
+**Tip:** Use `render_mode = "exploded"` in OpenSCAD to see assembly order.
 
 ## ⚠️ First Ride Checklist
 
@@ -148,8 +159,8 @@ Bed Temp: 80°C
 ### "Mechanism is too stiff"
 → Sand pivot pins with fine sandpaper
 
-### "Deck is too flexy"
-→ Increase infill to 60% or add another scissor pair
+### "Board is too flexy"
+→ Increase infill to 60% or add another scissor pair (`num_scissor_pairs`)
 
 ### "Can't export STL - takes forever"
 → Normal! F6 render can take 5-10 minutes. Be patient.
@@ -162,8 +173,8 @@ Bed Temp: 80°C
 ### For One Complete Board
 
 **3D Printing:**
-- ~600-800g PETG filament (~$15-20)
-- Print time: ~35-40 hours
+- ~400-600g PETG filament (~$10-15)
+- Print time: ~25-30 hours
 
 **Hardware:**
 - 2× Skateboard trucks (~$25-40)
@@ -182,7 +193,7 @@ Bed Temp: 80°C
 1. **Start with default settings** - they're tested and work well
 2. **Print one scissor arm first** - test fit before printing all 8
 3. **Use PETG over PLA** - more durable for actual riding
-4. **Don't skip supports** - deck overhangs need them
+4. **All parts print flat** — no supports needed for any component
 5. **Test the mechanism** - fold/unfold 20+ times before riding
 6. **Inspect before each ride** - check for cracks or wear
 

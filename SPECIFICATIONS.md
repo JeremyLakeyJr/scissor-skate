@@ -10,7 +10,7 @@ This document verifies that the Scissor-Skate design meets all requirements from
 
 **Implementation**: ✅ COMPLETE
 - Scissor-lift mechanism implemented in `scissor_mechanism_extended()` and `scissor_mechanism_collapsed()` modules
-- Pantograph linkage with crossing arms at adjustable angles (25° extended, 75° collapsed)
+- Pantograph linkage with crossing arms at adjustable angles (15° extended, 70° collapsed)
 - Smooth fold/unfold motion enabled by pivot system
 - Located in: `scissor_skate.scad` lines 180-280
 
@@ -42,7 +42,8 @@ This document verifies that the Scissor-Skate design meets all requirements from
 | Width | 8-10 inches | 9 inches (229mm) | ✅ Within spec |
 
 - Controlled by `deck_length_extended` parameter (line 22)
-- Creates full skateboard platform via `deck_surface()` module (line 162)
+- Rider stands directly on the scissor arms — no separate deck platform
+- Foot platforms bolt on top of upper crossbars for grip
 
 ### 4. Backpack Compatibility
 
@@ -63,17 +64,20 @@ This document verifies that the Scissor-Skate design meets all requirements from
 - 4-hole pattern per truck (industry standard 2.125" spacing)
 - Countersunk bolt holes for flush mounting
 - Located in: `truck_mounting_holes()` module (lines 153-169)
-- Mounting points on deck at wheelbase positions: ±15 inches (adjustable)
+- Truck mount brackets bolt below lower crossbars
 
 ### 6. Scissor Arms Provide Adjustable Height
 
 **Requirement**: The scissor arms provide adjustable height or collapse primarily along the length.
 
 **Implementation**: ✅ COMPLETE
+- Scissor arms (60mm wide, 8mm thick) arranged in 3 side-by-side pairs provide the riding surface
+- No separate top or bottom deck platform — rider stands directly on the scissor mechanism
 - Scissor mechanism collapses along length axis (primary dimension)
-- Arm angle adjusts from 25° (extended) to 75° (collapsed)
+- Arm angle adjusts from 15° (extended) to 70° (collapsed)
 - `extension_angle` and `collapse_angle` parameters control positions
-- Vertical height change is secondary effect (design-as-intended)
+- Crossbars connect arm endpoints across all pairs
+- Foot platforms bolt on top of upper crossbars; truck brackets bolt below lower crossbars
 - Located in: `scissor_mechanism_extended()` and `scissor_mechanism_collapsed()` modules
 
 ### 7. 3D Printable Design
@@ -84,17 +88,18 @@ This document verifies that the Scissor-Skate design meets all requirements from
 
 **Printability Features:**
 - All components designed for FDM printing
-- No overhangs > 45° without supports (support structures indicated)
+- All parts print flat without supports
 - Print-friendly tolerances (0.3mm default, adjustable)
 - Material recommendations documented for PLA, PETG, Nylon, CF-PETG, ASA
 - Documented in: README.md, TECHNICAL.md
 
 **Component Breakdown:**
-- Deck top platform: ✅ Printable (with supports)
-- Deck bottom platform: ✅ Printable (with supports)
-- Scissor arms: ✅ Printable (no supports needed)
+- Scissor arms (60mm wide, 8mm thick): ✅ Printable (no supports needed)
+- Crossbars: ✅ Printable (no supports needed)
+- Foot platforms (with grip texture): ✅ Printable (no supports needed)
+- Truck mount brackets: ✅ Printable (no supports needed)
 - Pivot pins: ✅ Printable (no supports needed)
-- Locking mechanism: ✅ Printable (minimal supports)
+- Locking pins: ✅ Printable (no supports needed)
 
 ### 8. Print-in-Place or Modular Assembly
 
@@ -127,17 +132,19 @@ This document verifies that the Scissor-Skate design meets all requirements from
 |---------|---------------|------------|--------|
 | Extended length | `deck_length_extended` | ✅ | 22 |
 | Deck width | `deck_width` | ✅ | 23 |
-| Deck thickness | `deck_thickness` | ✅ | 24 |
 | Collapsed length | `collapsed_length` | ✅ | 27 |
 | Collapsed height | `collapsed_height` | ✅ | 28 |
 | Scissor pairs | `num_scissor_pairs` | ✅ | 31 |
 | Arm width | `arm_width` | ✅ | 32 |
 | Arm thickness | `arm_thickness` | ✅ | 33 |
-| Pivot diameter | `pivot_diameter` | ✅ | 34 |
-| Pivot tolerance | `pivot_tolerance` | ✅ | 35 |
-| Concave depth | `deck_concave_depth` | ✅ | 38 |
-| Nose/tail curve | `deck_nose_tail_curve` | ✅ | 39 |
-| Truck wheelbase | `truck_wheelbase` | ✅ | 42 |
+| Arm spacing | `arm_spacing` | ✅ | 34 |
+| Pivot diameter | `pivot_diameter` | ✅ | 35 |
+| Pivot tolerance | `pivot_tolerance` | ✅ | 36 |
+| Foot platform length | `foot_platform_length` | ✅ | 39 |
+| Foot platform width | `foot_platform_width` | ✅ | 40 |
+| Foot platform thickness | `foot_platform_thickness` | ✅ | 41 |
+| Grip texture depth | `grip_texture_depth` | ✅ | 42 |
+| Truck bracket thickness | `truck_bracket_thickness` | ✅ | 45 |
 | Locking pin size | `locking_pin_diameter` | ✅ | 46 |
 
 **Total Adjustable Parameters:** 20+ variables
@@ -171,7 +178,7 @@ This document verifies that the Scissor-Skate design meets all requirements from
 **Customization Support:**
 - 20+ adjustable parameters in main section
 - Pre-configured templates in CONFIGURATIONS.md (4 configurations)
-- Render modes for viewing different components
+- Render modes for viewing different components: `"assembly"`, `"exploded"`, `"scissor_arms"`, `"crossbar"`, `"foot_platform"`, `"truck_bracket"`, `"pivot_pins"`, `"lock_mechanism"`
 - `show_extended` toggle for position visualization
 - Documented iteration process in TECHNICAL.md
 
@@ -193,9 +200,9 @@ This document verifies that the Scissor-Skate design meets all requirements from
 | Collapsed Thickness | 2-4" | 3.1" (80mm) ✅ |
 | Extended Length | 20-28" | 24" (610mm) ✅ |
 | Extended Width | 8-10" | 9" (229mm) ✅ |
-| Weight (no trucks) | <2kg | ~1.5-1.8kg ✅ |
-| Estimated Print Time | <50hrs | ~35-40hrs ✅ |
-| Material Usage | <1kg | ~600-800g ✅ |
+| Weight (no trucks) | <2kg | ~1.2-1.5kg ✅ |
+| Estimated Print Time | <50hrs | ~25-30hrs ✅ |
+| Material Usage | <1kg | ~400-600g ✅ |
 
 ### File Structure
 
@@ -204,13 +211,13 @@ scissor-skate/
 ├── scissor_skate.scad              # Main entry point (assembly + render modes)
 ├── components/
 │   ├── parameters.scad             # All configurable parameters
-│   ├── deck_surface.scad           # Deck surface shape module
+│   ├── scissor_mechanism.scad      # Scissor arms, crossbars, foot platforms, truck brackets
 │   ├── truck_mounting.scad         # Truck mounting hole pattern
-│   ├── deck_top.scad               # Top deck platform
-│   ├── deck_bottom.scad            # Bottom deck platform
-│   ├── scissor_mechanism.scad      # Scissor arms and mechanism
 │   ├── pivot_pin.scad              # Pivot pin for joints
-│   └── lock_mechanism.scad         # Locking pin
+│   ├── lock_mechanism.scad         # Locking pin
+│   ├── deck_top.scad               # (legacy)
+│   ├── deck_bottom.scad            # (legacy)
+│   └── deck_surface.scad           # (legacy)
 ├── screenshots/                    # Rendered images of the design
 ├── README.md                       # ✅ Complete build instructions
 ├── QUICKSTART.md                   # ✅ Quick start guide
@@ -226,23 +233,24 @@ scissor-skate/
 
 Beyond the requirements, the design includes:
 
-1. **Multiple render modes** - Preview individual components
+1. **Multiple render modes** - Preview individual components and exploded assembly view
 2. **Weight reduction features** - Strategic cutouts and slots
-3. **Reinforcement ribs** - Deck underside strengthening
-4. **Concave deck profile** - Comfortable riding surface
-5. **Nose/tail curves** - Better control and clearance
-6. **Automated export script** - Streamlined STL generation
-7. **Comprehensive documentation** - 5 detailed documentation files
-8. **Safety guidelines** - Testing protocols and warnings
-9. **Material selection guide** - Filament recommendations
-10. **Troubleshooting guide** - Common issues and solutions
-11. **Assembly instructions** - Step-by-step build process
-12. **Optimization iterations** - Design evolution documented
+3. **Crossbar system** - Connects arm endpoints across all 3 side-by-side pairs
+4. **Foot platform grip texture** - Textured riding surface for traction
+5. **Exploded assembly view** - All parts separated for assembly reference
+6. **No supports needed** - All parts print flat
+7. **Automated export script** - Streamlined STL generation
+8. **Comprehensive documentation** - 5 detailed documentation files
+9. **Safety guidelines** - Testing protocols and warnings
+10. **Material selection guide** - Filament recommendations
+11. **Troubleshooting guide** - Common issues and solutions
+12. **Assembly instructions** - Step-by-step build process
+13. **Optimization iterations** - Design evolution documented
 
 ## 🔍 Code Quality Metrics
 
-- **Total Lines**: ~380 in main SCAD file
-- **Modular Functions**: 15+ separate modules
+- **Total Lines**: ~350 in main SCAD file
+- **Modular Functions**: 18+ separate modules
 - **Comments**: Comprehensive inline documentation
 - **Readability**: Clear section headers and organization
 - **Maintainability**: Parametric design easy to modify
