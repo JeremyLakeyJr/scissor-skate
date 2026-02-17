@@ -68,9 +68,10 @@ module scissor_arm() {
         translate([(scissor_arm_length/2 - arm_width/2), 0, 0])
             cylinder(d=pivot_diameter + pivot_tolerance, h=arm_thickness + 2, center=true, $fn=24);
         
-        // Locking pin hole (between center and right end, on upper face)
-        // This hole is used to insert the locking pin when extended
-        translate([scissor_arm_length/4, 0, 0])
+        // Locking pin hole — near the right endpoint of the arm.
+        // When the mechanism is extended, a locking pin can be inserted
+        // through the upper crossbar and this hole to prevent collapse.
+        translate([(scissor_arm_length/2 - arm_width/2) - 25, 0, 0])
             cylinder(d=locking_pin_diameter + pivot_tolerance, h=arm_thickness + 2, center=true, $fn=24);
     }
 }

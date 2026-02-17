@@ -9,8 +9,9 @@
 include <parameters.scad>
 
 module locking_pin() {
-    // Pin length must pass through crossbar + arm thickness
-    pin_length = arm_thickness * 2 + truck_bracket_thickness + 10;
+    // Pin length must pass through crossbar + arm + clearance
+    // Crossbar thickness equals arm_thickness in the current design
+    pin_length = arm_thickness * 3 + 6;
     
     difference() {
         union() {

@@ -88,7 +88,7 @@ extended_half_span = arm_half * cos(extension_angle);
 extended_height = arm_half * sin(extension_angle);
 
 // Total mechanism width (all arm pairs side-by-side)
-total_mechanism_width = num_scissor_pairs * (arm_width + arm_spacing) - arm_spacing;
+total_mechanism_width = num_scissor_pairs * arm_width + (num_scissor_pairs - 1) * arm_spacing;
 
 // Extension ratio
 extension_ratio = deck_length_extended / collapsed_length;
