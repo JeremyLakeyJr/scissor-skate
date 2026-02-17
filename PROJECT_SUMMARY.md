@@ -149,18 +149,28 @@ All requirements from the problem statement have been met:
 
 ```
 scissor-skate/
-├── scissor_skate.scad          # Main OpenSCAD design (383 lines)
-├── README.md                    # Primary documentation (400+ lines)
-├── QUICKSTART.md                # Fast start guide (200+ lines)
-├── CONFIGURATIONS.md            # Pre-made configs (300+ lines)
-├── TECHNICAL.md                 # Engineering docs (500+ lines)
-├── SPECIFICATIONS.md            # Verification (400+ lines)
-├── BOM.md                       # Bill of materials (350+ lines)
-├── CONTRIBUTING.md              # Contribution guide (250+ lines)
-├── PROJECT_SUMMARY.md           # This file
-├── export_stls.sh              # Export automation script
-├── .gitignore                  # Git ignore patterns
-└── LICENSE                     # Project license
+├── scissor_skate.scad              # Main entry point (assembly + render modes)
+├── components/
+│   ├── parameters.scad             # All configurable parameters
+│   ├── deck_surface.scad           # Deck surface shape module
+│   ├── truck_mounting.scad         # Truck mounting hole pattern
+│   ├── deck_top.scad               # Top deck platform
+│   ├── deck_bottom.scad            # Bottom deck platform
+│   ├── scissor_mechanism.scad      # Scissor arms and mechanism
+│   ├── pivot_pin.scad              # Pivot pin for joints
+│   └── lock_mechanism.scad         # Locking pin
+├── screenshots/                    # Rendered images of the design
+├── README.md                       # Primary documentation (400+ lines)
+├── QUICKSTART.md                   # Fast start guide (200+ lines)
+├── CONFIGURATIONS.md               # Pre-made configs (300+ lines)
+├── TECHNICAL.md                    # Engineering docs (500+ lines)
+├── SPECIFICATIONS.md               # Verification (400+ lines)
+├── BOM.md                          # Bill of materials (350+ lines)
+├── CONTRIBUTING.md                 # Contribution guide (250+ lines)
+├── PROJECT_SUMMARY.md              # This file
+├── export_stls.sh                  # Export automation script
+├── .gitignore                      # Git ignore patterns
+└── LICENSE                         # Project license
 ```
 
 **Total Lines**: 2,400+ lines of code and documentation

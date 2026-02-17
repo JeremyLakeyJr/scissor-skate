@@ -2,6 +2,26 @@
 
 A portable, collapsible skateboard deck incorporating a scissor-lift (pantograph) mechanism that folds and unfolds for compact storage and transport.
 
+## 🖼️ Renders
+
+### Finished Product — Extended (Rideable)
+
+![Assembly Extended](screenshots/assembly_extended.png)
+
+### Collapsed (Portable)
+
+![Assembly Collapsed](screenshots/assembly_collapsed.png)
+
+### Individual Components
+
+| Deck Top | Deck Bottom |
+|----------|-------------|
+| ![Deck Top](screenshots/deck_top.png) | ![Deck Bottom](screenshots/deck_bottom.png) |
+
+| Scissor Arms | Pivot Pin | Lock Mechanism |
+|--------------|-----------|----------------|
+| ![Scissor Arms](screenshots/scissor_arms.png) | ![Pivot Pin](screenshots/pivot_pin.png) | ![Lock Mechanism](screenshots/lock_mechanism.png) |
+
 ## 📐 Design Specifications
 
 ### Collapsed Dimensions
@@ -39,7 +59,7 @@ A portable, collapsible skateboard deck incorporating a scissor-lift (pantograph
 
 ### Step 1: Customize the Design
 
-Open `scissor_skate.scad` in OpenSCAD and adjust the parameters at the top of the file:
+Open `scissor_skate.scad` in OpenSCAD and adjust the parameters. Parameters are defined in `components/parameters.scad`:
 
 ```openscad
 // Skateboard dimensions
@@ -60,6 +80,42 @@ deck_nose_tail_curve = 15;          // mm
 
 // Truck mounting
 truck_wheelbase = 15 * 25.4;        // 15 inches between trucks
+```
+
+### Project Structure
+
+The design is split into modular component files for maintainability:
+
+```
+scissor-skate/
+├── scissor_skate.scad              # Main entry point (assembly + render modes)
+├── components/
+│   ├── parameters.scad             # All configurable parameters
+│   ├── deck_surface.scad           # Deck surface shape module
+│   ├── truck_mounting.scad         # Truck mounting hole pattern
+│   ├── deck_top.scad               # Top deck platform
+│   ├── deck_bottom.scad            # Bottom deck platform
+│   ├── scissor_mechanism.scad      # Scissor arms and mechanism
+│   ├── pivot_pin.scad              # Pivot pin for joints
+│   └── lock_mechanism.scad         # Locking pin
+├── screenshots/                    # Rendered images of the design
+│   ├── assembly_extended.png       # Finished product render (extended)
+│   ├── assembly_collapsed.png      # Collapsed view render
+│   ├── deck_top.png                # Deck top component
+│   ├── deck_bottom.png             # Deck bottom component
+│   ├── scissor_arms.png            # Scissor arms component
+│   ├── pivot_pin.png               # Pivot pin component
+│   └── lock_mechanism.png          # Lock mechanism component
+├── README.md                       # This file
+├── QUICKSTART.md                   # Quick start guide
+├── CONFIGURATIONS.md               # Pre-made configurations
+├── TECHNICAL.md                    # Engineering documentation
+├── SPECIFICATIONS.md               # Design verification
+├── BOM.md                          # Bill of materials
+├── CONTRIBUTING.md                 # Contribution guide
+├── export_stls.sh                  # Automated STL export script
+├── .gitignore                      # Git ignore patterns
+└── LICENSE                         # Project license
 ```
 
 ### Step 2: Render Individual Components
