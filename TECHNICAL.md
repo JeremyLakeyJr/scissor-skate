@@ -59,6 +59,13 @@ When a rider stands on the extended board, forces are distributed:
 3. **Tension Forces**: At pivot connections and crossbar bolt holes
 4. **Transfer to Trucks**: Through other arm endpoints → lower crossbars → truck mount brackets → trucks
 
+**Dynamic Load Considerations**: During skateboarding, forces are not static.
+Pushing off, turning, and absorbing bumps create dynamic loads of 2–3× the
+rider's body weight. Design all structural components for at least **3× the
+maximum static rider weight** to account for dynamic impact forces. For
+example, a board intended for a 150 lb rider should be designed to handle
+450 lbs of instantaneous force at any single point.
+
 #### Critical Stress Points
 
 **Highest Stress Areas:**
@@ -106,8 +113,8 @@ Critical for structural integrity:
 The pivot system uses a pin-and-hole design with carefully calculated clearances:
 
 ```
-Pivot Pin Diameter: 6mm (nominal)
-Pivot Hole Diameter: 6.3mm (with 0.3mm tolerance)
+Pivot Pin Diameter: 8mm (default pivot_diameter)
+Pivot Hole Diameter: 8.3mm (with 0.3mm tolerance)
 Total Clearance: 0.3mm (allows smooth rotation)
 ```
 
@@ -121,17 +128,24 @@ Total Clearance: 0.3mm (allows smooth rotation)
 Pin cross-sectional area subjected to shear stress:
 
 ```
-Pin Diameter: 6mm
-Cross-sectional Area: π × (3mm)² = 28.3 mm²
+Pin Diameter: 8mm (default pivot_diameter)
+Cross-sectional Area: π × (4mm)² = 50.3 mm²
 
 For PLA (shear strength ~30 MPa):
-Maximum Shear Force: 28.3 mm² × 30 MPa = 849 N (≈190 lbs)
+Maximum Shear Force: 50.3 mm² × 30 MPa = 1509 N (≈339 lbs)
 
-Safety Factor: 2-3× recommended
-Safe Working Load: ~300-400 N per pivot (≈70-90 lbs)
+Safety Factor: 3× recommended (for dynamic skateboarding loads)
+Safe Working Load: ~503 N per pivot (≈113 lbs) per pin
+
+For PETG (shear strength ~35 MPa):
+Maximum Shear Force: 50.3 mm² × 35 MPa = 1760 N (≈396 lbs)
+Safe Working Load: ~587 N per pivot (≈132 lbs) per pin
 ```
 
-With multiple pivot points (4-6 per scissor pair), total capacity exceeds typical rider weight.
+**Important**: These calculations assume solid cross-sections. Real 3D printed
+pins with layer lines may have 40–60% of theoretical shear strength depending
+on layer adhesion quality. Always use metal shoulder bolts for rider-weight
+loads.
 
 ### Foot Platform Design
 
@@ -270,18 +284,20 @@ The foot platforms bolt on top of the upper crossbars and provide the rider's st
 |-----------|--------|-------------------|
 | Collapse Ratio | 2:1 | 1.85:1 |
 | Weight (no trucks) | < 2 kg | 1.5-1.8 kg |
-| Load Capacity | 200 lbs | 180-220 lbs* |
+| Static Load Capacity | 200 lbs | 180-220 lbs* |
+| Recommended Max Rider Weight | 130 lbs | 65-100 lbs** |
 | Fold Time | < 30 sec | 15-20 sec |
-| Lock Security | Zero slip | Zero slip** |
+| Lock Security | Zero slip | Zero slip*** |
 
 *Depends on material and infill
-**With proper engagement
+**Accounts for 2-3× dynamic load factor during riding; use metal shoulder bolts
+***With proper engagement
 
 ### Failure Modes and Prevention
 
 #### Mode 1: Pivot Pin Shear
-- **Cause**: Excessive lateral force
-- **Prevention**: Use larger diameter pins (7-8mm)
+- **Cause**: Excessive lateral force or dynamic impact loads
+- **Prevention**: Use metal shoulder bolts (M5 or larger) instead of printed pins; increase `pivot_diameter` to 10mm for heavier riders (recalculate shear strength using the formulas in the Pivot Pin Strength section above)
 - **Detection**: Cracks near pivot holes
 
 #### Mode 2: Crossbar Fracture
@@ -291,7 +307,7 @@ The foot platforms bolt on top of the upper crossbars and provide the rider's st
 
 #### Mode 3: Scissor Arm Bending
 - **Cause**: Arm too thin or material too soft
-- **Prevention**: Increase arm thickness (5-6mm) or use stiffer material
+- **Prevention**: Increase arm thickness (15+ mm) or use stiffer material (CF-PETG, Nylon)
 - **Detection**: Permanent deformation
 
 #### Mode 4: Lock Mechanism Failure

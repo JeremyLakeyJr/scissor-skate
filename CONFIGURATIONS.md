@@ -55,7 +55,7 @@ collapsed_height = 90;               // 90mm vertical height
 // Scissor mechanism (arms ARE the riding surface)
 num_scissor_pairs = 4;               // 4 side-by-side pairs - WIDER
 arm_width = 65;                      // 65mm arm width - WIDER
-arm_thickness = 9;                   // 9mm arm thickness - THICKER
+arm_thickness = 14;                  // 14mm arm thickness - THICKER
 arm_spacing = 5;                     // 5mm gap between arm pairs
 pivot_diameter = 9;                  // 9mm pivots - LARGER
 pivot_tolerance = 0.3;               // 0.3mm clearance
@@ -92,7 +92,7 @@ collapsed_height = 70;               // 70mm vertical height
 // Scissor mechanism (arms ARE the riding surface)
 num_scissor_pairs = 2;               // 2 side-by-side pairs - NARROWER
 arm_width = 50;                      // 50mm arm width - NARROWER
-arm_thickness = 7;                   // 7mm arm thickness - THINNER
+arm_thickness = 10;                  // 10mm arm thickness - THINNER but still safe for lighter riders
 arm_spacing = 5;                     // 5mm gap between arm pairs
 pivot_diameter = 7;                  // 7mm pivots - SMALLER
 pivot_tolerance = 0.3;               // 0.3mm clearance
@@ -154,10 +154,10 @@ locking_slot_width = 12;             // 12mm slots
 
 | Configuration | Recommended Filament | Infill | Notes |
 |--------------|---------------------|--------|-------|
-| Compact Commuter | PLA or PETG | 40-50% | Good for riders up to 160 lbs |
-| Cruiser Board | PETG or Nylon | 50-60% | Good for riders up to 180 lbs |
-| Mini Pocket | PLA | 30-40% | Lightweight, riders up to 140 lbs |
-| Heavy-Duty | Nylon or CF-PETG | 60-80% | Riders up to 220+ lbs |
+| Compact Commuter | PETG or CF-PETG | 50-60% | Good for riders up to 150 lbs (static); apply 3× safety factor for riding |
+| Cruiser Board | PETG or Nylon | 50-60% | Good for riders up to 180 lbs (static); apply 3× safety factor for riding |
+| Mini Pocket | PETG or CF-PETG | 40-50% | Riders up to 100 lbs only (2 arm pairs limit strength; stronger material needed to achieve even this reduced rating) |
+| Heavy-Duty | Nylon or CF-PETG | 60-80% | Riders up to 220+ lbs (static); best option for heavier riders |
 
 ## Print Time Estimates
 
