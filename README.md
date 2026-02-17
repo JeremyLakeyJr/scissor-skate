@@ -33,7 +33,7 @@ A portable, collapsible skateboard that uses a scissor-lift (pantograph) mechani
 ### Extended Dimensions
 - **Length**: ~20-28 inches (508-711mm) - full rideable skateboard
 - **Width**: ~8-10 inches (203-254mm)
-- **Profile**: Standard skateboard deck platform
+- **Profile**: Rideable scissor mechanism with foot platforms
 
 ## 🎯 Features
 

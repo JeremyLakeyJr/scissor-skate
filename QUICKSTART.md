@@ -97,7 +97,7 @@ Repeat for:
 Material: PETG
 Layer Height: 0.2mm
 Infill: 50%
-Supports: Yes
+Supports: No
 Brim: 8mm
 Nozzle Temp: 235°C
 Bed Temp: 80°C
@@ -159,8 +159,8 @@ Bed Temp: 80°C
 ### "Mechanism is too stiff"
 → Sand pivot pins with fine sandpaper
 
-### "Deck is too flexy"
-→ Increase infill to 60% or add another scissor pair
+### "Board is too flexy"
+→ Increase infill to 60% or add another scissor pair (`num_scissor_pairs`)
 
 ### "Can't export STL - takes forever"
 → Normal! F6 render can take 5-10 minutes. Be patient.
@@ -173,8 +173,8 @@ Bed Temp: 80°C
 ### For One Complete Board
 
 **3D Printing:**
-- ~600-800g PETG filament (~$15-20)
-- Print time: ~35-40 hours
+- ~400-600g PETG filament (~$10-15)
+- Print time: ~25-30 hours
 
 **Hardware:**
 - 2× Skateboard trucks (~$25-40)
@@ -193,7 +193,7 @@ Bed Temp: 80°C
 1. **Start with default settings** - they're tested and work well
 2. **Print one scissor arm first** - test fit before printing all 8
 3. **Use PETG over PLA** - more durable for actual riding
-4. **Don't skip supports** - deck overhangs need them
+4. **All parts print flat** — no supports needed for any component
 5. **Test the mechanism** - fold/unfold 20+ times before riding
 6. **Inspect before each ride** - check for cracks or wear
 
