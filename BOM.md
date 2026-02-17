@@ -241,7 +241,7 @@ If building 2+ boards, consider:
 - **Hardware Sets**: Order truck/wheel combos
 - **Group Buys**: Coordinate with friends for bulk discounts
 
-### Estimted Costs for Multiple Boards
+### Estimated Costs for Multiple Boards
 
 | Quantity | Cost per Board | Total | Savings |
 |----------|----------------|-------|---------|
