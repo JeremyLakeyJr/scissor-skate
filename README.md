@@ -2,35 +2,6 @@
 
 A portable, collapsible skateboard that uses a scissor-lift (pantograph) mechanism for the deck itself — **you stand directly on the scissor mechanism while skating**. No separate top or bottom deck platforms. The wide, sturdy scissor arms with integrated foot platforms ARE the riding surface.
 
-## 🖼️ Renders
-
-### Extended (Rideable) — Stand on the Scissor Mechanism
-
-![Assembly Extended](screenshots/assembly_extended.png)
-
-### Collapsed (Portable)
-
-![Assembly Collapsed](screenshots/assembly_collapsed.png)
-
-### Individual Components
-
-| Scissor Arms | Foot Platform | Truck Bracket |
-|--------------|---------------|---------------|
-| ![Scissor Arms](screenshots/scissor_arms.png) | ![Foot Platform](screenshots/foot_platform.png) | ![Truck Bracket](screenshots/truck_bracket.png) |
-
-| Pivot Pin | Lock Mechanism |
-|-----------|----------------|
-| ![Pivot Pin](screenshots/pivot_pin.png) | ![Lock Mechanism](screenshots/lock_mechanism.png) |
-
-### Additional Views (Planned)
-
-The following renders would further illustrate the design — contributions welcome!
-
-- **Exploded view**: All parts separated vertically showing assembly order (use `render_mode = "exploded"` in OpenSCAD)
-- **Collapsed vs. extended side-by-side**: Direct comparison of both states
-- **Pivot close-up**: Shoulder bolt hole detail with chamfer cross-section
-- **Collapse motion animation** (GIF): Animated sequence from extended → collapsed
-
 ## 📐 Design Specifications
 
 ### Collapsed Dimensions
@@ -232,7 +203,7 @@ For heavier riders or more aggressive skating:
 
 ```openscad
 num_scissor_pairs = 4;              // More side-by-side pairs = wider, stronger
-arm_thickness = 10;                 // Thicker arms = more rigid
+arm_thickness = 15;                 // Thicker arms = more rigid (default is 12)
 arm_width = 70;                     // Wider arms = more surface area
 ```
 
@@ -281,13 +252,15 @@ For a standard build:
 
 ### Weight Capacity
 
-Designed for riders up to 200 lbs (91 kg) when using:
+Designed for riders up to 200 lbs (91 kg) **under static load** when using:
 - PETG or stronger filament
 - 50% or higher infill
-- 2+ scissor arm pairs
-- Proper assembly
+- 3+ scissor arm pairs
+- Proper assembly with metal shoulder bolts at all pivots
 
-**Important**: Always test the mechanism with weights before riding. 3D printed parts may have limitations compared to traditional skateboard materials. Use metal shoulder bolts for all pivots — printed pivot pins are for prototyping only.
+**Dynamic Load Warning**: Skateboarding involves dynamic forces of 2–3× body weight during pushing, turning, and landing. A 150 lb rider can generate 300–450 lbs of instantaneous force on the deck. Always apply a **safety factor of at least 3×** when estimating capacity for riding use. For example, a board rated for 200 lbs static should only be ridden by users up to ~130 lbs until extensively tested under dynamic conditions.
+
+**Important**: Always test the mechanism with static weights before riding. Start with 50 lbs and increase in 25 lb increments. 3D printed parts have inherent limitations — layer adhesion is weaker than solid material. Use metal shoulder bolts for all pivots — printed pivot pins are for prototyping only.
 
 ## ⚠️ Safety & Durability
 
