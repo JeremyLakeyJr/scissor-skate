@@ -5,9 +5,10 @@
  * Include this file in any component that needs access to global dimensions.
  *
  * Design concept: No separate top or bottom deck platforms. The rider
- * stands directly on the scissor mechanism itself. Wide scissor arms
- * with integrated foot platforms serve as the riding surface.
- * Truck mount brackets attach at the scissor arm endpoints.
+ * stands directly on the scissor mechanism itself. Thick rectangular
+ * scissor arms with integrated foot platforms serve as the riding
+ * surface. Truck mount brackets attach at the scissor arm endpoints.
+ * The scissor mechanism extends along the direction of wheel travel.
  *
  * Assembly overview (extended position, top view):
  *
@@ -39,7 +40,7 @@ collapsed_height = 80;              // mm (vertical height when collapsed)
 // Scissor mechanism parameters (arms ARE the deck)
 num_scissor_pairs = 3;              // Number of scissor arm pairs (side by side for width)
 arm_width = 60;                     // mm (wide arms - these are the riding surface)
-arm_thickness = 8;                  // mm (thick for strength - rider stands on these)
+arm_thickness = 12;                 // mm (thick rectangular arms for strength - rider stands on these)
 arm_spacing = 5;                    // mm (gap between parallel arm pairs)
 pivot_diameter = 8;                 // mm (diameter of pivot holes - larger for strength)
 // pivot_tolerance (default 0.3): Calibrate per printer/filament—print a

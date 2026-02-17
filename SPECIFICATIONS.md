@@ -71,7 +71,7 @@ This document verifies that the Scissor-Skate design meets all requirements from
 **Requirement**: The scissor arms provide adjustable height or collapse primarily along the length.
 
 **Implementation**: ✅ COMPLETE
-- Scissor arms (60mm wide, 8mm thick) arranged in 3 side-by-side pairs provide the riding surface
+- Scissor arms (60mm wide, 12mm thick, rectangular) arranged in 3 side-by-side pairs provide the riding surface
 - No separate top or bottom deck platform — rider stands directly on the scissor mechanism
 - Scissor mechanism collapses along length axis (primary dimension)
 - Arm angle adjusts from 15° (extended) to 70° (collapsed)
@@ -94,7 +94,7 @@ This document verifies that the Scissor-Skate design meets all requirements from
 - Documented in: README.md, TECHNICAL.md
 
 **Component Breakdown:**
-- Scissor arms (60mm wide, 8mm thick): ✅ Printable (no supports needed)
+- Scissor arms (60mm wide, 12mm thick, rectangular): ✅ Printable (no supports needed)
 - Crossbars: ✅ Printable (no supports needed)
 - Foot platforms (with grip texture): ✅ Printable (no supports needed)
 - Truck mount brackets: ✅ Printable (no supports needed)

@@ -8,7 +8,7 @@ The scissor-lift (pantograph) mechanism is a kinematic linkage that converts rot
 
 ### Key Components
 
-1. **Scissor Arms**: Wide (60mm, 8mm thick) crossing linkages arranged in 3 side-by-side pairs that form the riding surface
+1. **Scissor Arms**: Wide (60mm, 12mm thick) rectangular crossing linkages arranged in 3 side-by-side pairs that form the riding surface
 2. **Crossbars**: Connect all arm endpoints at each end of the mechanism
 3. **Foot Platforms**: Bolt on top of upper crossbars with grip texture — rider stands here
 4. **Truck Mount Brackets**: Bolt below lower crossbars for truck attachment
